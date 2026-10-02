@@ -18,11 +18,11 @@
       "herkese_acik": true,
       "kategori": "Yapay zekâ ve araçlar",
       "veri": "api",
-      "aciklama": "Yerel, çevrimdışı öncelikli Türkçe sesli yapay zekâ asistanı. LLM yalnızca JSON araç çağrısı üretir, gerçek eylemleri Python yapar.",
+      "aciklama": "Kendi bilgisayarında, mümkün olduğunca internetsiz çalışan Türkçe sesli asistan. Yapay zekâ yalnızca ne yapılacağına karar verir; gerçek işleri sıradan kod yapar. Yeni yetenekler eklenti olarak eklenir.",
       "etiketler": [
         "Python",
-        "faster-whisper",
-        "eklenti mimarisi"
+        "Konuşma tanıma",
+        "Eklentiler"
       ]
     },
     {
@@ -30,11 +30,11 @@
       "herkese_acik": true,
       "kategori": "Yapay zekâ ve araçlar",
       "veri": "api",
-      "aciklama": "Claude Code'un /model menüsüne herhangi bir OpenRouter modelini ekleyen yerel proxy; kimlik bilgileri makineden çıkmaz.",
+      "aciklama": "Claude Code'a OpenRouter'daki diğer yapay zekâ modellerini de seçilebilir yapan küçük yerel program. Anahtarların bilgisayarından çıkmaz.",
       "etiketler": [
         "TypeScript",
-        "proxy",
-        "OpenRouter"
+        "OpenRouter",
+        "Claude Code"
       ]
     },
     {
@@ -42,7 +42,7 @@
       "herkese_acik": true,
       "kategori": "Yapay zekâ ve araçlar",
       "veri": "api",
-      "aciklama": "Yerel geliştirici araçlarının durumunu tek panelde toplayan kontrol kulesi; araçları sekme olarak açar, boştakileri kapatır.",
+      "aciklama": "Geliştirici araçlarının ve projelerin durumunu tek ekranda gösteren yerel kontrol paneli. Araçlar sekme olarak açılır, kullanılmayanlar kendiliğinden kapanır.",
       "etiketler": [
         "Python",
         "FastAPI"
@@ -53,7 +53,7 @@
       "herkese_acik": true,
       "kategori": "Web ve mobil",
       "veri": "api",
-      "aciklama": "Flask + Supabase ile gerçek zamanlı mesajlaşma, hikâyeler, anketler ve satır düzeyi güvenlik içeren sosyal ağ.",
+      "aciklama": "Mesajlaşma, hikâyeler ve anketler içeren gerçek zamanlı bir sosyal ağ. Kullanıcı verisi, yetkisi olmayanın göremeyeceği şekilde veritabanı seviyesinde korunur.",
       "etiketler": [
         "Flask",
         "Supabase",
@@ -65,7 +65,7 @@
       "herkese_acik": true,
       "kategori": "Web ve mobil",
       "veri": "api",
-      "aciklama": "Sosyal-Medya-Web platformunun Kotlin ve Jetpack Compose ile yazılmış yerel Android istemcisi.",
+      "aciklama": "Sosyal-Medya-Web ağının Android uygulaması (Kotlin, Jetpack Compose).",
       "etiketler": [
         "Kotlin",
         "Jetpack Compose"
@@ -76,7 +76,7 @@
       "herkese_acik": true,
       "kategori": "Web ve mobil",
       "veri": "api",
-      "aciklama": "Canlı API'ye karşı kimlik doğrulama, akış, beğeni, yorum ve profil içeren React/TypeScript istemcisi.",
+      "aciklama": "Aynı sosyal ağın API'sine bağlanan web arayüzü: giriş, akış, beğeni, yorum ve profil sayfaları.",
       "etiketler": [
         "React",
         "TypeScript"
@@ -87,7 +87,7 @@
       "herkese_acik": true,
       "kategori": "Web ve mobil",
       "veri": "api",
-      "aciklama": "ASP.NET Core + EF Core API'si ve Redux'lı React/TypeScript arayüzüyle tam yığın blog platformu.",
+      "aciklama": "Sunucusu (ASP.NET Core) ve arayüzü (React) birlikte yazılmış tam bir blog platformu.",
       "etiketler": [
         "ASP.NET Core",
         "React",
@@ -99,7 +99,7 @@
       "herkese_acik": true,
       "kategori": "Veri ve finans",
       "veri": "api",
-      "aciklama": "BIST ve ABD hisseleri için fiyat ve haber verisi, FinBERT duygu analizi ve XGBoost tahminiyle maliyet duyarlı walk-forward backtest ve sanal alım-satım simülasyonu. Yatırım tavsiyesi değildir.",
+      "aciklama": "BIST ve ABD hisseleri için fiyat ve haber verisi toplar; haberlerin duygusunu ve fiyat tahminini yapay zekâyla üretir, stratejiyi geçmiş veride (komisyon ve maliyetler dahil) sınar ve sanal alım-satım yapar. Yatırım tavsiyesi değildir.",
       "etiketler": [
         "Python",
         "XGBoost",
