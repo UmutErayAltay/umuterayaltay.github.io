@@ -6,7 +6,11 @@
     "hakkinda": "Yerel yapay zekâ araçları, sosyal ağ platformları ve geliştirici araçları geliştiriyorum.\n\nAşağıda herkese açık projelerim var.",
     "site_url": "https://umuterayaltay.github.io"
   },
-  "kategoriler": ["Yapay zekâ ve araçlar", "Web ve mobil", "Veri ve finans"],
+  "kategoriler": [
+    "Yapay zekâ ve araçlar",
+    "Web ve mobil",
+    "Veri ve finans"
+  ],
   "siralama": "manuel",
   "repolar": [
     {
@@ -15,7 +19,11 @@
       "kategori": "Yapay zekâ ve araçlar",
       "veri": "api",
       "aciklama": "Yerel, çevrimdışı öncelikli Türkçe sesli yapay zekâ asistanı. LLM yalnızca JSON araç çağrısı üretir, gerçek eylemleri Python yapar.",
-      "etiketler": ["Python", "faster-whisper", "eklenti mimarisi"]
+      "etiketler": [
+        "Python",
+        "faster-whisper",
+        "eklenti mimarisi"
+      ]
     },
     {
       "ad": "claude-openrouter",
@@ -23,7 +31,22 @@
       "kategori": "Yapay zekâ ve araçlar",
       "veri": "api",
       "aciklama": "Claude Code'un /model menüsüne herhangi bir OpenRouter modelini ekleyen yerel proxy; kimlik bilgileri makineden çıkmaz.",
-      "etiketler": ["TypeScript", "proxy", "OpenRouter"]
+      "etiketler": [
+        "TypeScript",
+        "proxy",
+        "OpenRouter"
+      ]
+    },
+    {
+      "ad": "kule",
+      "herkese_acik": true,
+      "kategori": "Yapay zekâ ve araçlar",
+      "veri": "api",
+      "aciklama": "Yerel geliştirici araçlarının durumunu tek panelde toplayan kontrol kulesi; araçları sekme olarak açar, boştakileri kapatır.",
+      "etiketler": [
+        "Python",
+        "FastAPI"
+      ]
     },
     {
       "ad": "Sosyal-Medya-Web",
@@ -31,7 +54,11 @@
       "kategori": "Web ve mobil",
       "veri": "api",
       "aciklama": "Flask + Supabase ile gerçek zamanlı mesajlaşma, hikâyeler, anketler ve satır düzeyi güvenlik içeren sosyal ağ.",
-      "etiketler": ["Flask", "Supabase", "Playwright"]
+      "etiketler": [
+        "Flask",
+        "Supabase",
+        "Playwright"
+      ]
     },
     {
       "ad": "Sosyal-Medya-Mobil",
@@ -39,7 +66,10 @@
       "kategori": "Web ve mobil",
       "veri": "api",
       "aciklama": "Sosyal-Medya-Web platformunun Kotlin ve Jetpack Compose ile yazılmış yerel Android istemcisi.",
-      "etiketler": ["Kotlin", "Jetpack Compose"]
+      "etiketler": [
+        "Kotlin",
+        "Jetpack Compose"
+      ]
     },
     {
       "ad": "sosyal-medya-react-client",
@@ -47,7 +77,10 @@
       "kategori": "Web ve mobil",
       "veri": "api",
       "aciklama": "Canlı API'ye karşı kimlik doğrulama, akış, beğeni, yorum ve profil içeren React/TypeScript istemcisi.",
-      "etiketler": ["React", "TypeScript"]
+      "etiketler": [
+        "React",
+        "TypeScript"
+      ]
     },
     {
       "ad": "BlogSitesi",
@@ -55,7 +88,11 @@
       "kategori": "Web ve mobil",
       "veri": "api",
       "aciklama": "ASP.NET Core + EF Core API'si ve Redux'lı React/TypeScript arayüzüyle tam yığın blog platformu.",
-      "etiketler": ["ASP.NET Core", "React", "Redux"]
+      "etiketler": [
+        "ASP.NET Core",
+        "React",
+        "Redux"
+      ]
     },
     {
       "ad": "BorsaSite",
@@ -63,7 +100,13 @@
       "kategori": "Veri ve finans",
       "veri": "api",
       "aciklama": "BIST ve ABD hisseleri için fiyat ve haber verisi, FinBERT duygu analizi ve XGBoost tahminiyle maliyet duyarlı walk-forward backtest ve sanal alım-satım simülasyonu. Yatırım tavsiyesi değildir.",
-      "etiketler": ["Python", "XGBoost", "FinBERT", "FastAPI", "PostgreSQL"]
+      "etiketler": [
+        "Python",
+        "XGBoost",
+        "FinBERT",
+        "FastAPI",
+        "PostgreSQL"
+      ]
     }
   ]
 }
