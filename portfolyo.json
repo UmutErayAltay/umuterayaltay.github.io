@@ -18,7 +18,7 @@
       "herkese_acik": true,
       "kategori": "Yapay zekâ ve araçlar",
       "veri": "api",
-      "aciklama": "Kendi bilgisayarında, mümkün olduğunca internetsiz çalışan Türkçe sesli asistan. Yapay zekâ yalnızca ne yapılacağına karar verir; gerçek işleri sıradan kod yapar. Yeni yetenekler eklenti olarak eklenir.",
+      "aciklama": "Bilgisayarı sesle yöneten Türkçe asistan. İnternet varken bulut modelini, yokken yerel modeli kullanır; konuşma tanıma bilgisayarında yapılır. Yapay zekâ yalnızca ne yapılacağına karar verir, işi sıradan kod yapar; tehlikeli işlerde onay istenir. Yeni yetenekler eklenti olarak eklenir.",
       "etiketler": [
         "Python",
         "Konuşma tanıma",
