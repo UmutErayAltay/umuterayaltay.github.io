@@ -1,9 +1,9 @@
 {
   "sahip": {
-    "ad": "UmutErayAltay",
-    "unvan": "Yazılım geliştirici",
+    "ad": "Umut Eray ALTAY",
+    "unvan": "Bilgisayar mühendisi",
     "github": "UmutErayAltay",
-    "hakkinda": "Yerel yapay zekâ araçları, sosyal ağ platformları ve geliştirici araçları geliştiriyorum.\n\nAşağıda herkese açık projelerim var.",
+    "hakkinda": "Burdur Mehmet Akif Ersoy Üniversitesi'nden 3,5 not ortalamasıyla mezun oldum. Ünver Grup'ta yaptığım stajda yapay zekâ API'siyle çalışan bir sohbet botu üzerinde çalıştım.\n\nKendi projelerimi de geliştiriyorum: bir sosyal ağ (web, Android ve React arayüzleri), bir blog platformu, borsa verisiyle çalışan bir analiz aracı ve yapay zekâ destekli yerel araçlar. Hepsi aşağıda, GitHub'da herkese açık.",
     "site_url": "https://umuterayaltay.github.io"
   },
   "kategoriler": [
