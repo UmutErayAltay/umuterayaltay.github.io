@@ -9,4 +9,6 @@ Site elle yazılmaz; `portfolyo.json` (proje listesi), `yazilar/*.md` (yazılar)
 - Proje kartlarındaki istatistikler GitHub API'sinden alınır (yalnız herkese açık repolar; özel repo asla yayınlanmaz).
 - Yayın her push'ta ve her Pazartesi otomatik çalışır; Actions sekmesinden elle de tetiklenebilir.
 - Yazı eklemek için `yazilar/` altına `ad-soyad.md` koy; frontmatter'da `herkese_acik: true` yoksa taslak sayılır ve yayınlanmaz.
-- `generator/` özel bir depodan kopyalanmıştır; bkz. `generator/KAYNAK.txt`.
+- Yayın öncesi üretici testleri koşar; bir repo için veri alınamazsa (`--siki`) yayın yapılmaz, eski site kalır.
+- Paylaşım görselleri (`og/*.png`) ve `feed.xml` yayın sırasında üretilir.
+- `generator/` özel bir depodan kopyalanmıştır; bkz. `generator/KAYNAK.txt` (güncelleme: araclar'daki `tools/portfolyo_yayinla.py`).

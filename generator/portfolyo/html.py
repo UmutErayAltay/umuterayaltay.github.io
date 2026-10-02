@@ -144,6 +144,29 @@ h2 { margin: 40px 0 16px; font-size: 1.3rem; font-weight: 600; }
 .yazi pre code { background: none; padding: 0; overflow-wrap: normal; }
 .yazi blockquote { margin: 16px 0; padding: 0 16px; border-left: 3px solid var(--accent); color: var(--muted); }
 .geri { display: inline-block; margin-bottom: 20px; color: var(--accent); text-decoration: none; }
+.ust-menu { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 20px; }
+.ust-menu a { color: var(--accent); text-decoration: none; font-weight: 500; }
+.ust-menu a:hover { text-decoration: underline; }
+#projeler, #yazilar { scroll-margin-top: 16px; }
+.baglantilar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.dugme { font-size: 0.8rem; font-weight: 500; padding: 3px 12px; border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); text-decoration: none; }
+.dugme:hover { background: var(--accent); color: var(--card-bg); }
+.feed { font-size: 0.8rem; font-weight: 500; margin-left: 8px; color: var(--accent); text-decoration: none; }
+.yazi-gezinme { display: flex; justify-content: space-between; gap: 16px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--card-border); }
+.yazi-gezinme a { color: var(--accent); text-decoration: none; max-width: 48%; }
+.yazi-gezinme .sonraki { margin-left: auto; text-align: right; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; animation: none !important; }
+}
+@media print {
+    body { background: #fff; color: #000; padding: 0; }
+    .kart { box-shadow: none !important; break-inside: avoid; border-color: #999; }
+    .ust-menu, .geri, .yazi-gezinme, .feed { display: none; }
+    a { color: inherit; }
+    .yazi a[href^="https"]::after { content: " (" attr(href) ")"; font-size: 0.8em; }
+}
 .diller .chip { background: transparent; border: 1px solid var(--card-border); color: var(--muted); }
 footer {
     margin-top: 40px;
@@ -236,8 +259,8 @@ def _favicon(ad: str) -> str:
     return f'<link rel="icon" href="data:image/svg+xml,{urllib.parse.quote(svg, safe="")}">'
 
 
-def _meta(baslik: str, aciklama: str, url: str, tur: str) -> str:
-    """Açıklama + Open Graph + Twitter kartı. `og:image` yok (barındırılan görsel gerekir)."""
+def _meta(baslik: str, aciklama: str, url: str, tur: str, og_gorsel: str | None = None) -> str:
+    """Açıklama + Open Graph + Twitter kartı. `og:image` yalnız başarıyla üretilmiş mutlak URL verilirse yazılır."""
     b, a = _escape_all(baslik), _escape_all(aciklama)
     satirlar = [
         f'<meta name="description" content="{a}">',
@@ -245,12 +268,19 @@ def _meta(baslik: str, aciklama: str, url: str, tur: str) -> str:
         f'<meta property="og:description" content="{a}">',
         f'<meta property="og:type" content="{tur}">',
         '<meta property="og:locale" content="tr_TR">',
-        '<meta name="twitter:card" content="summary">',
+        f'<meta name="twitter:card" content="{"summary_large_image" if og_gorsel else "summary"}">',
         '<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">',
         '<meta name="theme-color" content="#0f0f0f" media="(prefers-color-scheme: dark)">',
     ]
     if url:
         satirlar.append(f'<meta property="og:url" content="{_escape_all(url)}">')
+    if og_gorsel:
+        satirlar += [
+            f'<meta property="og:image" content="{_escape_all(og_gorsel)}">',
+            '<meta property="og:image:width" content="1200">',
+            '<meta property="og:image:height" content="630">',
+            f'<meta property="og:image:alt" content="{b}">',
+        ]
     return "\n    ".join(satirlar)
 
 
@@ -273,6 +303,12 @@ def _kart_html(repo_cfg: object, veri: object | None, seviye: int = 2) -> str:
         f'<span class="chip">{_escape_all(e)}</span>' for e in (getattr(repo_cfg, "etiketler", []) or [])
     )
 
+    baglanti_html = "".join(
+        f'<a class="dugme" href="{_escape_all(url)}" rel="noopener noreferrer" target="_blank">{_escape_all(ad)}</a>'
+        for ad, url in (getattr(repo_cfg, "baglantilar", ()) or ())
+    )
+    if baglanti_html:
+        baglanti_html = f'<div class="baglantilar">{baglanti_html}</div>'
     istatistik_html = dil_html = etkinlik_html = readme_html = ""
     if veri is not None:
         commit_sayisi = getattr(veri, "commit_sayisi", 0)
@@ -298,6 +334,7 @@ def _kart_html(repo_cfg: object, veri: object | None, seviye: int = 2) -> str:
             <h{seviye} class="kart-baslik"><a href="{repo_url}" rel="noopener noreferrer" target="_blank">{repo_ad}</a></h{seviye}>
             <p class="aciklama">{repo_aciklama}</p>
             <div class="etiketler">{etiket_html}</div>
+            {baglanti_html}
             <div class="diller">{dil_html}</div>
             {istatistik_html}
             {readme_html}
@@ -336,9 +373,10 @@ def _bolumler(ayar, veriler: Mapping[str, object | None]) -> list[tuple[str | No
     return bolumler
 
 
-def _yazilar_bolumu(yazilar: Sequence[object]) -> str:
+def _yazilar_bolumu(yazilar: Sequence[object], feed: bool = False) -> str:
     if not yazilar:
         return ""
+    rss = ' <a class="feed" href="feed.xml">RSS</a>' if feed else ""
     satirlar = []
     for y in sorted(yazilar, key=lambda y: str(getattr(y, "tarih", "")), reverse=True):
         slug = _escape_all(getattr(y, "slug", ""))
@@ -347,10 +385,20 @@ def _yazilar_bolumu(yazilar: Sequence[object]) -> str:
             f'<time datetime="{_escape_all(getattr(y, "tarih", ""))}">{_escape_all(getattr(y, "tarih", ""))}</time>'
             f'<p class="aciklama">{_escape_all(getattr(y, "ozet", ""))}</p></li>'
         )
-    return f'<section class="yazilar"><h2>Yazılar</h2><ul class="yazi-listesi">{"".join(satirlar)}</ul></section>'
+    return f'<section class="yazilar" id="yazilar"><h2>Yazılar{rss}</h2><ul class="yazi-listesi">{"".join(satirlar)}</ul></section>'
 
 
-def _belge(ayar, *, baslik: str, aciklama: str, url: str, tur: str, ust: str, icerik: str, bugun: date) -> str:
+def _feed_link(ayar, href: str | None) -> str:
+    if not href:
+        return ""
+    baslik = f'{getattr(getattr(ayar, "sahip", None), "ad", "")} · Yazılar'
+    return f'<link rel="alternate" type="application/atom+xml" href="{href}" title="{_escape_all(baslik)}">'
+
+
+def _belge(
+    ayar, *, baslik: str, aciklama: str, url: str, tur: str, ust: str, icerik: str, bugun: date,
+    og_gorsel: str | None = None, feed_href: str | None = None,
+) -> str:
     """Ortak sayfa iskeleti: CSP, meta, favicon, üst, içerik, alt bilgi."""
     sahip = getattr(ayar, "sahip", None)
     ad = getattr(sahip, "ad", "")
@@ -363,8 +411,9 @@ def _belge(ayar, *, baslik: str, aciklama: str, url: str, tur: str, ust: str, ic
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Security-Policy" content="{_CSP}">
     <title>{_escape_all(baslik)}</title>
-    {_meta(baslik, aciklama, url, tur)}
+    {_meta(baslik, aciklama, url, tur, og_gorsel)}
     {_favicon(str(ad))}
+    {_feed_link(ayar, feed_href)}
     <style>{_CSS}</style>
 </head>
 <body>
@@ -381,12 +430,15 @@ def _belge(ayar, *, baslik: str, aciklama: str, url: str, tur: str, ust: str, ic
 """
 
 
-def _sayfa_url(ayar, yol: str = "") -> str:
+def sayfa_url(ayar, yol: str = "") -> str:
     taban = getattr(getattr(ayar, "sahip", None), "site_url", "") or ""
     return f"{taban.rstrip('/')}/{yol}" if taban else ""
 
 
-def render(ayar, veriler: Mapping[str, object | None], bugun: date, yazilar: Sequence[object] = ()) -> str:
+def render(
+    ayar, veriler: Mapping[str, object | None], bugun: date, yazilar: Sequence[object] = (),
+    og_gorsel: str | None = None, feed: bool = False,
+) -> str:
     """Ana sayfa HTML'ini üretir (kategoriler, kartlar, varsa yazılar)."""
     sahip = getattr(ayar, "sahip", None)
     ad = getattr(sahip, "ad", "")
@@ -401,48 +453,83 @@ def render(ayar, veriler: Mapping[str, object | None], bugun: date, yazilar: Seq
             bolumler.append(izgara)
         else:
             bolumler.append(f'<section class="kategori"><h2>{_escape_all(baslik)}</h2>{izgara}</section>')
+    projeler = f'<div id="projeler">{"".join(bolumler)}</div>'
 
+    github = _escape_all(getattr(sahip, "github", ""))
+    menu = ['<a href="#projeler">Projeler</a>']
+    if yazilar:
+        menu.append('<a href="#yazilar">Yazılar</a>')
+    if github:
+        menu.append(f'<a href="https://github.com/{github}" rel="noopener noreferrer" target="_blank">GitHub</a>')
     ust = f"""<header>
         <h1>{_escape_all(ad)}</h1>
         <p class="unvan">{_escape_all(unvan)}</p>
         <p class="hakkinda">{_escape_all(hakkinda)}</p>
+        <nav class="ust-menu" aria-label="Sayfa bölümleri">{"".join(menu)}</nav>
     </header>"""
     return _belge(
         ayar,
         baslik=str(ad),
         aciklama=_kisalt(hakkinda or unvan or ad),
-        url=_sayfa_url(ayar),
+        url=sayfa_url(ayar),
         tur="website",
         ust=ust,
-        icerik="\n".join(bolumler) + _yazilar_bolumu(yazilar),
+        icerik=projeler + _yazilar_bolumu(yazilar, feed),
         bugun=bugun,
+        og_gorsel=og_gorsel,
+        feed_href="feed.xml" if feed and yazilar else None,
     )
 
 
-def render_yazi(ayar, yazi: object, bugun: date) -> str:
-    """Tek yazı sayfası: aynı CSS/CSP/meta, '← ana sayfa' bağlantısı ve <article>."""
+def _okuma_dk(kelime: object) -> int:
+    return max(1, round((kelime if isinstance(kelime, int) else 0) / 200))
+
+
+def _gezinme(onceki: object | None, sonraki: object | None) -> str:
+    """Yazı sonunda eski/yeni yazıya göreli bağlantılar (aynı `yazilar/` klasörü)."""
+    parcalar = []
+    if onceki is not None:
+        parcalar.append(
+            f'<a class="onceki" href="{_escape_all(onceki.slug)}.html" rel="prev">← {_escape_all(onceki.baslik)}</a>'
+        )
+    if sonraki is not None:
+        parcalar.append(
+            f'<a class="sonraki" href="{_escape_all(sonraki.slug)}.html" rel="next">{_escape_all(sonraki.baslik)} →</a>'
+        )
+    return f'<nav class="yazi-gezinme" aria-label="Diğer yazılar">{"".join(parcalar)}</nav>' if parcalar else ""
+
+
+def render_yazi(
+    ayar, yazi: object, bugun: date, og_gorsel: str | None = None,
+    onceki: object | None = None, sonraki: object | None = None, feed: bool = False,
+) -> str:
+    """Tek yazı sayfası: aynı CSS/CSP/meta, '← Ana sayfa', okuma süresi, önceki/sonraki ve <article>."""
     slug = str(getattr(yazi, "slug", ""))
     etiketler = "".join(
         f'<span class="chip">{_escape_all(e)}</span>' for e in (getattr(yazi, "etiketler", ()) or ())
     )
     tarih = _escape_all(getattr(yazi, "tarih", ""))
+    dk = _okuma_dk(getattr(yazi, "kelime", 0))
     ust = '<header><a class="geri" href="../index.html">← Ana sayfa</a></header>'
     # govde_html yazi.markdown_html çıktısıdır (kaçışlı, yalnız izinli etiketler)
     icerik = f"""<article class="yazi">
         <h1>{_escape_all(getattr(yazi, "baslik", ""))}</h1>
-        <p class="yazi-meta"><time datetime="{tarih}">{tarih}</time></p>
+        <p class="yazi-meta"><time datetime="{tarih}">{tarih}</time> · {dk} dk okuma</p>
         {getattr(yazi, "govde_html", "")}
         <div class="etiketler">{etiketler}</div>
+        {_gezinme(onceki, sonraki)}
     </article>"""
     return _belge(
         ayar,
         baslik=f'{getattr(yazi, "baslik", "")} · {getattr(getattr(ayar, "sahip", None), "ad", "")}',
         aciklama=str(getattr(yazi, "ozet", "")),
-        url=_sayfa_url(ayar, f"yazilar/{slug}.html"),
+        url=sayfa_url(ayar, f"yazilar/{slug}.html"),
         tur="article",
         ust=ust,
         icerik=icerik,
         bugun=bugun,
+        og_gorsel=og_gorsel,
+        feed_href="../feed.xml" if feed else None,
     )
 
 

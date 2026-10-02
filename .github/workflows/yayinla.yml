@@ -27,11 +27,21 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Siteyi üret (GitHub API + yazılar, sızıntı denetimi dahil)
+      - name: Üretici testleri (kırmızıysa yayın yapılmaz)
+        env:
+          PYTHONPATH: generator
+        run: |
+          pip install pytest
+          python -m pytest generator/tests -q
+      - name: Siteyi üret (GitHub API + yazılar + paylaşım görselleri, sızıntı denetimi dahil)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PYTHONPATH: generator
-        run: python -m portfolyo uret portfolyo.json --api --yazilar yazilar --cikti _site
+        # --siki: bir repo için veri alınamazsa (adı değişti, özel yapıldı, API hatası) iş kırmızı biter, eski site kalır.
+        run: python -m portfolyo uret portfolyo.json --api --siki --og-gorsel --yazilar yazilar --cikti _site
+      - name: Paylaşım görseli kontrolü
+        run: |
+          if [ ! -f _site/og/site.png ]; then echo "::warning::og/site.png üretilemedi (Chrome yok mu?); site görselsiz yayınlanacak"; fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

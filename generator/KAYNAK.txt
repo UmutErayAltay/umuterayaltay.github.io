@@ -1,6 +1,7 @@
 Bu klasör, üretici kaynak kodunun kopyasıdır (vendoring). Düzenleme yapma; kaynakta değiştir, buraya yeniden kopyala.
 
-kaynak:   araclar/portfolyo/portfolyo/*.py   (özel depo)
-commit:   9330bc3b65e6c715f3deeb175ebd1f42995675ff
-kopyalama: cp araclar/portfolyo/portfolyo/*.py generator/portfolyo/
-çalıştırma: PYTHONPATH=generator python -m portfolyo uret portfolyo.json --api --yazilar yazilar --cikti _site
+kaynak:   araclar/portfolyo/{portfolyo,tests}/*.py   (özel depo)
+commit:   50b4c2ad5f60cfddf3bff886f4f0da999b946b48
+kopyalama: python3 tools/portfolyo_yayinla.py <bu-reponun-klonu>
+çalıştırma: PYTHONPATH=generator python -m portfolyo uret portfolyo.json --api --siki --og-gorsel --yazilar yazilar --cikti _site
+test:      PYTHONPATH=generator python -m pytest generator/tests -q
