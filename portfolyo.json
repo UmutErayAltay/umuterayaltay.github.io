@@ -1,9 +1,26 @@
 {
+  "dil": "tr",
+  "dil_baglantisi": "/en/",
   "sahip": {
-    "ad": "Umut Eray ALTAY",
-    "unvan": "Bilgisayar mühendisi",
+    "ad": "Umut Eray Altay",
+    "unvan": "Bilgisayar mühendisi · Yerel yapay zekâ araçları",
     "github": "UmutErayAltay",
-    "hakkinda": "Burdur Mehmet Akif Ersoy Üniversitesi'nden 3,5 not ortalamasıyla mezun oldum. Ünver Grup'ta yaptığım stajda yapay zekâ API'siyle çalışan bir sohbet botu üzerinde çalıştım.\n\nKendi projelerimi de geliştiriyorum: bir sosyal ağ (web, Android ve React arayüzleri), bir blog platformu, borsa verisiyle çalışan bir analiz aracı ve yapay zekâ destekli yerel araçlar. Hepsi aşağıda, GitHub'da herkese açık.",
+    "eposta": "altayumuteray@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/umut-eray-altay",
+    "konum": "Bursa",
+    "cv_tr": "/cv/CV_Umut_Eray_Altay_TR.pdf",
+    "cv_en": "/cv/CV_Umut_Eray_Altay_EN.pdf",
+    "ledler": [
+      {
+        "metin": "İş arıyorum",
+        "tur": "eylem"
+      },
+      {
+        "metin": "Çevrimdışı çalışabilir",
+        "tur": "acik"
+      }
+    ],
+    "hakkinda": "Yapay zekâ araçlarını internetsiz de çalışabilecek şekilde kendi bilgisayarında koşturan ve testleriyle teslim eden tam yığın geliştiriciyim.\n\nBurdur Mehmet Akif Ersoy Üniversitesi Bilgisayar Mühendisliği'nden mezunum. Sesle yönetilen yerel bir asistan, web ve Android'de çalışan bir sosyal ağ ve borsa verisiyle çalışan bir analiz sistemi geliştirdim. Hepsi GitHub'da herkese açık.",
     "site_url": "https://umuterayaltay.github.io"
   },
   "kategoriler": [
@@ -12,17 +29,118 @@
     "Veri ve finans"
   ],
   "siralama": "manuel",
+  "deneyim": [
+    {
+      "rol": "Yazılım geliştirme stajyeri",
+      "kurum": "Ünver Group & Ünver Otomotiv",
+      "tarih": "Eylül – Kasım 2024",
+      "aciklama": "Gemini API, LangChain ve C# ile kullanıcı verilerine özel yanıt üreten, doğal dil isteklerinden SQL sorguları oluşturup HTML/Excel çıktısı veren bir sohbet botu geliştirdim."
+    }
+  ],
+  "egitim": [
+    {
+      "derece": "Bilgisayar mühendisliği",
+      "okul": "Burdur Mehmet Akif Ersoy Üniversitesi",
+      "tarih": "2020 – 2024",
+      "ek": "Not ortalaması 3.4 / 4.0"
+    }
+  ],
+  "yetenekler": [
+    {
+      "grup": "Diller",
+      "ogeler": [
+        "Python",
+        "C#",
+        "Kotlin",
+        "JavaScript",
+        "TypeScript",
+        "SQL"
+      ]
+    },
+    {
+      "grup": "Web ve mobil",
+      "ogeler": [
+        "Flask",
+        "FastAPI",
+        "ASP.NET Core",
+        "React",
+        "Jetpack Compose"
+      ]
+    },
+    {
+      "grup": "Veri ve veritabanı",
+      "ogeler": [
+        "PostgreSQL",
+        "Supabase",
+        "XGBoost",
+        "scikit-learn",
+        "PyTorch"
+      ]
+    },
+    {
+      "grup": "Yapay zekâ",
+      "ogeler": [
+        "Yerel LLM (Ollama)",
+        "Araç çağırma",
+        "faster-whisper",
+        "FinBERT"
+      ]
+    },
+    {
+      "grup": "Kalite ve araçlar",
+      "ogeler": [
+        "pytest",
+        "Playwright",
+        "Selenium",
+        "Git / GitHub",
+        "REST API tasarımı"
+      ]
+    }
+  ],
   "repolar": [
     {
       "ad": "artemis-ai-assistant",
       "herkese_acik": true,
+      "one_cikan": true,
       "kategori": "Yapay zekâ ve araçlar",
       "veri": "api",
-      "aciklama": "Bilgisayarı sesle yöneten Türkçe asistan. İnternet varken bulut modelini, yokken yerel modeli kullanır; konuşma tanıma bilgisayarında yapılır. Yapay zekâ yalnızca ne yapılacağına karar verir, işi sıradan kod yapar; tehlikeli işlerde onay istenir. Yeni yetenekler eklenti olarak eklenir.",
+      "aciklama": "Bilgisayarı sesle yöneten Türkçe asistan. İnternet varken bulut modelini, yokken yerel modeli kullanır; konuşma tanıma bilgisayarında yapılır. Yapay zekâ yalnızca ne yapılacağına karar verir, işi sıradan kod yapar; tehlikeli işlerde onay istenir. 540 otomatik testle doğrulanır.",
       "etiketler": [
         "Python",
         "Konuşma tanıma",
         "Eklentiler"
+      ],
+      "led": {
+        "metin": "İnternetsiz çalışabilir",
+        "tur": "acik"
+      }
+    },
+    {
+      "ad": "Sosyal-Medya-Web",
+      "herkese_acik": true,
+      "one_cikan": true,
+      "kategori": "Web ve mobil",
+      "veri": "api",
+      "aciklama": "Mesajlaşma, hikâyeler ve anketler içeren gerçek zamanlı bir sosyal ağ. Kullanıcı verisi, yetkisi olmayanın göremeyeceği şekilde veritabanı seviyesinde korunur. 303 pytest ve Playwright testiyle doğrulanır.",
+      "etiketler": [
+        "Flask",
+        "Supabase",
+        "Playwright"
+      ]
+    },
+    {
+      "ad": "BorsaSite",
+      "herkese_acik": true,
+      "one_cikan": true,
+      "kategori": "Veri ve finans",
+      "veri": "api",
+      "aciklama": "BIST ve ABD hisseleri için fiyat ve haber verisi toplar; haberlerin duygusunu ve fiyat tahminini yapay zekâyla üretir, stratejiyi geçmiş veride (komisyon ve maliyetler dahil) sınar ve sanal alım-satım yapar. Yatırım tavsiyesi değildir.",
+      "etiketler": [
+        "Python",
+        "XGBoost",
+        "FinBERT",
+        "FastAPI",
+        "PostgreSQL"
       ]
     },
     {
@@ -46,18 +164,6 @@
       "etiketler": [
         "Python",
         "FastAPI"
-      ]
-    },
-    {
-      "ad": "Sosyal-Medya-Web",
-      "herkese_acik": true,
-      "kategori": "Web ve mobil",
-      "veri": "api",
-      "aciklama": "Mesajlaşma, hikâyeler ve anketler içeren gerçek zamanlı bir sosyal ağ. Kullanıcı verisi, yetkisi olmayanın göremeyeceği şekilde veritabanı seviyesinde korunur.",
-      "etiketler": [
-        "Flask",
-        "Supabase",
-        "Playwright"
       ]
     },
     {
@@ -95,17 +201,15 @@
       ]
     },
     {
-      "ad": "BorsaSite",
+      "ad": "Ev_Fiyat_Tahmin",
       "herkese_acik": true,
       "kategori": "Veri ve finans",
       "veri": "api",
-      "aciklama": "BIST ve ABD hisseleri için fiyat ve haber verisi toplar; haberlerin duygusunu ve fiyat tahminini yapay zekâyla üretir, stratejiyi geçmiş veride (komisyon ve maliyetler dahil) sınar ve sanal alım-satım yapar. Yatırım tavsiyesi değildir.",
+      "aciklama": "Selenium ile veri toplama ve regresyon modellemesiyle ev fiyatı tahmini.",
       "etiketler": [
         "Python",
-        "XGBoost",
-        "FinBERT",
-        "FastAPI",
-        "PostgreSQL"
+        "Selenium",
+        "Regresyon"
       ]
     }
   ]

@@ -1,0 +1,216 @@
+{
+  "dil": "en",
+  "dil_baglantisi": "/",
+  "sahip": {
+    "ad": "Umut Eray Altay",
+    "unvan": "Computer engineer · Local AI tools",
+    "github": "UmutErayAltay",
+    "eposta": "altayumuteray@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/umut-eray-altay",
+    "konum": "Bursa, Türkiye",
+    "cv_tr": "/cv/CV_Umut_Eray_Altay_TR.pdf",
+    "cv_en": "/cv/CV_Umut_Eray_Altay_EN.pdf",
+    "ledler": [
+      {
+        "metin": "Open to work",
+        "tur": "eylem"
+      },
+      {
+        "metin": "Runs offline",
+        "tur": "acik"
+      }
+    ],
+    "hakkinda": "I'm a full-stack developer who builds AI tools that can run on your own machine, even offline, and ships them with automated tests.\n\nI graduated in Computer Engineering from Burdur Mehmet Akif Ersoy University. I've built a voice-controlled local assistant, a social network that runs on web and Android, and a stock-analysis system. All of it is public on GitHub.",
+    "site_url": "https://umuterayaltay.github.io/en"
+  },
+  "kategoriler": [
+    "AI and tools",
+    "Web and mobile",
+    "Data and finance"
+  ],
+  "siralama": "manuel",
+  "deneyim": [
+    {
+      "rol": "Software development intern",
+      "kurum": "Ünver Group & Ünver Otomotiv",
+      "tarih": "Sep – Nov 2024",
+      "aciklama": "Built a chatbot with the Gemini API, LangChain and C# that answers from a user's own data and turns natural-language requests into SQL queries, returning results as HTML or Excel."
+    }
+  ],
+  "egitim": [
+    {
+      "derece": "B.Sc. Computer Engineering",
+      "okul": "Burdur Mehmet Akif Ersoy University",
+      "tarih": "2020 – 2024",
+      "ek": "GPA 3.4 / 4.0"
+    }
+  ],
+  "yetenekler": [
+    {
+      "grup": "Languages",
+      "ogeler": [
+        "Python",
+        "C#",
+        "Kotlin",
+        "JavaScript",
+        "TypeScript",
+        "SQL"
+      ]
+    },
+    {
+      "grup": "Web and mobile",
+      "ogeler": [
+        "Flask",
+        "FastAPI",
+        "ASP.NET Core",
+        "React",
+        "Jetpack Compose"
+      ]
+    },
+    {
+      "grup": "Data and databases",
+      "ogeler": [
+        "PostgreSQL",
+        "Supabase",
+        "XGBoost",
+        "scikit-learn",
+        "PyTorch"
+      ]
+    },
+    {
+      "grup": "AI",
+      "ogeler": [
+        "Local LLMs (Ollama)",
+        "Tool calling",
+        "faster-whisper",
+        "FinBERT"
+      ]
+    },
+    {
+      "grup": "Quality and tooling",
+      "ogeler": [
+        "pytest",
+        "Playwright",
+        "Selenium",
+        "Git / GitHub",
+        "REST API design"
+      ]
+    }
+  ],
+  "repolar": [
+    {
+      "ad": "artemis-ai-assistant",
+      "herkese_acik": true,
+      "one_cikan": true,
+      "kategori": "AI and tools",
+      "veri": "api",
+      "aciklama": "A Turkish voice assistant that controls the computer. It uses a cloud model when online and a local model when not; speech recognition runs on the machine. The AI only decides what to do, ordinary code does the work, and risky actions ask for confirmation. Verified by 540 automated tests.",
+      "etiketler": [
+        "Python",
+        "Speech recognition",
+        "Plugins"
+      ],
+      "led": {
+        "metin": "Works offline",
+        "tur": "acik"
+      }
+    },
+    {
+      "ad": "Sosyal-Medya-Web",
+      "herkese_acik": true,
+      "one_cikan": true,
+      "kategori": "Web and mobile",
+      "veri": "api",
+      "aciklama": "A real-time social network with messaging, stories and polls. User data is protected at the database level so people without permission can't see it. Verified by 303 pytest and Playwright tests.",
+      "etiketler": [
+        "Flask",
+        "Supabase",
+        "Playwright"
+      ]
+    },
+    {
+      "ad": "BorsaSite",
+      "herkese_acik": true,
+      "one_cikan": true,
+      "kategori": "Data and finance",
+      "veri": "api",
+      "aciklama": "Collects price and news data for BIST and US stocks, produces news sentiment and price forecasts with AI, backtests the strategy on historical data (commissions and costs included) and paper-trades it. Not investment advice.",
+      "etiketler": [
+        "Python",
+        "XGBoost",
+        "FinBERT",
+        "FastAPI",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "ad": "claude-openrouter",
+      "herkese_acik": true,
+      "kategori": "AI and tools",
+      "veri": "api",
+      "aciklama": "A small local program that makes the other AI models on OpenRouter selectable in Claude Code. Your keys never leave your machine.",
+      "etiketler": [
+        "TypeScript",
+        "OpenRouter",
+        "Claude Code"
+      ]
+    },
+    {
+      "ad": "kule",
+      "herkese_acik": true,
+      "kategori": "AI and tools",
+      "veri": "api",
+      "aciklama": "A local control panel that shows the state of developer tools and projects on one screen. Tools open as tabs and unused ones close themselves.",
+      "etiketler": [
+        "Python",
+        "FastAPI"
+      ]
+    },
+    {
+      "ad": "Sosyal-Medya-Mobil",
+      "herkese_acik": true,
+      "kategori": "Web and mobile",
+      "veri": "api",
+      "aciklama": "The Android app for the Sosyal-Medya-Web network (Kotlin, Jetpack Compose).",
+      "etiketler": [
+        "Kotlin",
+        "Jetpack Compose"
+      ]
+    },
+    {
+      "ad": "sosyal-medya-react-client",
+      "herkese_acik": true,
+      "kategori": "Web and mobile",
+      "veri": "api",
+      "aciklama": "A web client for the same social network's API: sign-in, feed, likes, comments and profile pages.",
+      "etiketler": [
+        "React",
+        "TypeScript"
+      ]
+    },
+    {
+      "ad": "BlogSitesi",
+      "herkese_acik": true,
+      "kategori": "Web and mobile",
+      "veri": "api",
+      "aciklama": "A complete blog platform with its server (ASP.NET Core) and interface (React) written together.",
+      "etiketler": [
+        "ASP.NET Core",
+        "React",
+        "Redux"
+      ]
+    },
+    {
+      "ad": "Ev_Fiyat_Tahmin",
+      "herkese_acik": true,
+      "kategori": "Data and finance",
+      "veri": "api",
+      "aciklama": "House price prediction with Selenium data collection and regression modeling.",
+      "etiketler": [
+        "Python",
+        "Selenium",
+        "Regression"
+      ]
+    }
+  ]
+}

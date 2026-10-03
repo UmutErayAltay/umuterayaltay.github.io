@@ -33,15 +33,26 @@ jobs:
         run: |
           pip install pytest
           python -m pytest generator/tests -q
-      - name: Siteyi üret (GitHub API + yazılar + paylaşım görselleri, sızıntı denetimi dahil)
+      - name: Siteyi üret (TR kök + EN /en/; GitHub API, yazılar, paylaşım görselleri, sızıntı denetimi dahil)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PYTHONPATH: generator
         # --siki: bir repo için veri alınamazsa (adı değişti, özel yapıldı, API hatası) iş kırmızı biter, eski site kalır.
-        run: python -m portfolyo uret portfolyo.json --api --siki --og-gorsel --yazilar yazilar --cikti _site
+        # Yazılar yalnız Türkçe; İngilizce sürüm yazısız üretilir.
+        run: |
+          python -m portfolyo uret portfolyo.json --api --siki --og-gorsel --yazilar yazilar --cikti _site
+          python -m portfolyo uret portfolyo.en.json --api --siki --og-gorsel --cikti _site/en
+      - name: Statik dosyalar (yazı tipleri, CV PDF'leri)
+        run: |
+          cp -r statik/. _site/
+          for f in cv/CV_Umut_Eray_Altay_TR.pdf cv/CV_Umut_Eray_Altay_EN.pdf fonts/barlow-700-latin.woff2 fonts/barlow-condensed-700-latin.woff2 en/index.html; do
+            test -f "_site/$f" || { echo "::error::_site/$f eksik"; exit 1; }
+          done
       - name: Paylaşım görseli kontrolü
         run: |
-          if [ ! -f _site/og/site.png ]; then echo "::warning::og/site.png üretilemedi (Chrome yok mu?); site görselsiz yayınlanacak"; fi
+          for g in og/site.png en/og/site.png; do
+            if [ ! -f "_site/$g" ]; then echo "::warning::$g üretilemedi (Chrome yok mu?); o sayfa görselsiz yayınlanacak"; fi
+          done
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

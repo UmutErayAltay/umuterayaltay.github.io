@@ -1,3 +1,8 @@
 __pycache__/
 _site/
 *.pyc
+
+# Tasarım çalışma dosyaları (yalnız yerel; PRODUCT.md iç notlar içerir)
+.impeccable/
+PRODUCT.md
+DESIGN.md
