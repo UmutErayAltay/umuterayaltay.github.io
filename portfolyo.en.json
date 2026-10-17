@@ -3,11 +3,11 @@
   "dil_baglantisi": "/",
   "sahip": {
     "ad": "Umut Eray Altay",
-    "unvan": "Computer engineer · Local AI tools",
+    "unvan": "Junior AI application developer",
     "github": "UmutErayAltay",
     "eposta": "altayumuteray@gmail.com",
-    "linkedin": "https://www.linkedin.com/in/umut-eray-altay",
-    "konum": "Bursa, Türkiye",
+    "linkedin": "https://www.linkedin.com/in/umut-eray-altay-87a50a211",
+    "konum": "İzmir",
     "cv_tr": "/cv/CV_Umut_Eray_Altay_TR.pdf",
     "cv_en": "/cv/CV_Umut_Eray_Altay_EN.pdf",
     "ledler": [
@@ -20,7 +20,7 @@
         "tur": "acik"
       }
     ],
-    "hakkinda": "I'm a full-stack developer who builds AI tools that can run on your own machine, even offline, and ships them with automated tests.\n\nI graduated in Computer Engineering from Burdur Mehmet Akif Ersoy University. I've built a voice-controlled local assistant, a social network that runs on web and Android, and a stock-analysis system. All of it is public on GitHub.",
+    "hakkinda": "I build my projects with AI coding agents (Claude Code). I set the requirements and product decisions, split the work across agents, and verify the result with automated tests and review.\n\nI graduated in Computer Engineering from Burdur Mehmet Akif Ersoy University. With this approach I've built Turkish voice-controlled desktop assistants, a social network that runs on web and Android, and a stock-analysis system. All of it is public on GitHub. I'm looking for a junior role where I can gain experience in a team.",
     "site_url": "https://umuterayaltay.github.io/en"
   },
   "kategoriler": [
@@ -34,7 +34,7 @@
       "rol": "Software development intern",
       "kurum": "Ünver Group & Ünver Otomotiv",
       "tarih": "Sep – Nov 2024",
-      "aciklama": "Built a chatbot with the Gemini API, LangChain and C# that answers from a user's own data and turns natural-language requests into SQL queries, returning results as HTML or Excel."
+      "aciklama": "Built, with AI assistance, a chatbot using Gemini API, LangChain and C# that turns natural-language questions into SQL queries and returns HTML/Excel output."
     }
   ],
   "egitim": [
@@ -47,53 +47,42 @@
   ],
   "yetenekler": [
     {
-      "grup": "Languages",
+      "grup": "AI-assisted development",
       "ogeler": [
-        "Python",
-        "C#",
-        "Kotlin",
-        "JavaScript",
-        "TypeScript",
-        "SQL"
+        "Claude Code",
+        "Task definition",
+        "Agent orchestration",
+        "Test-driven verification"
       ]
     },
     {
-      "grup": "Web and mobile",
+      "grup": "LLM applications",
       "ogeler": [
-        "Flask",
-        "FastAPI",
-        "ASP.NET Core",
-        "React",
-        "Jetpack Compose"
-      ]
-    },
-    {
-      "grup": "Data and databases",
-      "ogeler": [
-        "PostgreSQL",
-        "Supabase",
-        "XGBoost",
-        "scikit-learn",
-        "PyTorch"
-      ]
-    },
-    {
-      "grup": "AI",
-      "ogeler": [
-        "Local LLMs (Ollama)",
         "Tool calling",
-        "faster-whisper",
-        "FinBERT"
+        "MCP",
+        "Ollama",
+        "OpenRouter / Anthropic API",
+        "Prompt-injection awareness"
       ]
     },
     {
-      "grup": "Quality and tooling",
+      "grup": "Programming",
       "ogeler": [
+        "Python (basic)"
+      ]
+    },
+    {
+      "grup": "Technologies used in projects",
+      "ogeler": [
+        "FastAPI",
+        "Flask",
+        "PostgreSQL / Supabase",
+        "TypeScript",
         "pytest",
         "Playwright",
-        "Selenium",
-        "Git / GitHub",
-        "REST API design"
+        "GitHub Actions",
+        "Docker",
+        "Git"
       ]
     }
   ],
@@ -104,7 +93,7 @@
       "one_cikan": true,
       "kategori": "AI and tools",
       "veri": "api",
-      "aciklama": "A Turkish voice assistant that controls the computer. It uses a cloud model when online and a local model when not; speech recognition runs on the machine. The AI only decides what to do, ordinary code does the work, and risky actions ask for confirmation. Verified by 540 automated tests.",
+      "aciklama": "A Turkish voice assistant that controls the computer. It uses a cloud model when online and a local model when not; speech recognition runs on the machine. The AI only decides what to do, ordinary code does the work, and risky actions ask for confirmation. Verified by about 1,000 automated tests.",
       "etiketler": [
         "Python",
         "Speech recognition",
@@ -121,7 +110,7 @@
       "one_cikan": true,
       "kategori": "Web and mobile",
       "veri": "api",
-      "aciklama": "A real-time social network with messaging, stories and polls. User data is protected at the database level so people without permission can't see it. Verified by 303 pytest and Playwright tests.",
+      "aciklama": "A real-time social network with messaging, stories, polls and notifications, plus an Android app on the same API. Verified by about 310 pytest tests and Playwright end-to-end tests.",
       "etiketler": [
         "Flask",
         "Supabase",

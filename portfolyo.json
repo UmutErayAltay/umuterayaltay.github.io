@@ -3,11 +3,11 @@
   "dil_baglantisi": "/en/",
   "sahip": {
     "ad": "Umut Eray Altay",
-    "unvan": "Bilgisayar mühendisi · Yerel yapay zekâ araçları",
+    "unvan": "Junior yapay zekâ uygulama geliştirici",
     "github": "UmutErayAltay",
     "eposta": "altayumuteray@gmail.com",
-    "linkedin": "https://www.linkedin.com/in/umut-eray-altay",
-    "konum": "Bursa",
+    "linkedin": "https://www.linkedin.com/in/umut-eray-altay-87a50a211",
+    "konum": "İzmir",
     "cv_tr": "/cv/CV_Umut_Eray_Altay_TR.pdf",
     "cv_en": "/cv/CV_Umut_Eray_Altay_EN.pdf",
     "ledler": [
@@ -20,7 +20,7 @@
         "tur": "acik"
       }
     ],
-    "hakkinda": "Yapay zekâ araçlarını internetsiz de çalışabilecek şekilde kendi bilgisayarında koşturan ve testleriyle teslim eden tam yığın geliştiriciyim.\n\nBurdur Mehmet Akif Ersoy Üniversitesi Bilgisayar Mühendisliği'nden mezunum. Sesle yönetilen yerel bir asistan, web ve Android'de çalışan bir sosyal ağ ve borsa verisiyle çalışan bir analiz sistemi geliştirdim. Hepsi GitHub'da herkese açık.",
+    "hakkinda": "Projelerimi yapay zekâ kodlama ajanlarıyla (Claude Code) geliştiriyorum. Gereksinimleri ve ürün kararlarını ben belirliyorum, işi ajanlara bölüyorum, sonucu otomatik testler ve incelemeyle doğruluyorum.\n\nBurdur Mehmet Akif Ersoy Üniversitesi Bilgisayar Mühendisliği'nden mezunum. Bu yöntemle sesle yönetilen Türkçe masaüstü asistanları, web ve Android'de çalışan bir sosyal ağ ve borsa verisiyle çalışan bir analiz sistemi geliştirdim. Hepsi GitHub'da herkese açık. Ekipte deneyim kazanacağım junior bir pozisyon arıyorum.",
     "site_url": "https://umuterayaltay.github.io"
   },
   "kategoriler": [
@@ -34,7 +34,7 @@
       "rol": "Yazılım geliştirme stajyeri",
       "kurum": "Ünver Group & Ünver Otomotiv",
       "tarih": "Eylül – Kasım 2024",
-      "aciklama": "Gemini API, LangChain ve C# ile kullanıcı verilerine özel yanıt üreten, doğal dil isteklerinden SQL sorguları oluşturup HTML/Excel çıktısı veren bir sohbet botu geliştirdim."
+      "aciklama": "Gemini API, LangChain ve C# ile doğal dildeki soruları SQL sorgusuna çeviren ve sonucu HTML/Excel olarak veren bir sohbet botunu yapay zekâ desteğiyle geliştirdim."
     }
   ],
   "egitim": [
@@ -47,53 +47,42 @@
   ],
   "yetenekler": [
     {
-      "grup": "Diller",
+      "grup": "Yapay zekâ ile geliştirme",
       "ogeler": [
-        "Python",
-        "C#",
-        "Kotlin",
-        "JavaScript",
-        "TypeScript",
-        "SQL"
+        "Claude Code",
+        "Görev tanımlama",
+        "Ajan yönetimi",
+        "Test odaklı doğrulama"
       ]
     },
     {
-      "grup": "Web ve mobil",
+      "grup": "LLM uygulamaları",
       "ogeler": [
-        "Flask",
-        "FastAPI",
-        "ASP.NET Core",
-        "React",
-        "Jetpack Compose"
-      ]
-    },
-    {
-      "grup": "Veri ve veritabanı",
-      "ogeler": [
-        "PostgreSQL",
-        "Supabase",
-        "XGBoost",
-        "scikit-learn",
-        "PyTorch"
-      ]
-    },
-    {
-      "grup": "Yapay zekâ",
-      "ogeler": [
-        "Yerel LLM (Ollama)",
         "Araç çağırma",
-        "faster-whisper",
-        "FinBERT"
+        "MCP",
+        "Ollama",
+        "OpenRouter / Anthropic API",
+        "Prompt injection farkındalığı"
       ]
     },
     {
-      "grup": "Kalite ve araçlar",
+      "grup": "Programlama",
       "ogeler": [
+        "Python (temel)"
+      ]
+    },
+    {
+      "grup": "Projelerde kullanılan teknolojiler",
+      "ogeler": [
+        "FastAPI",
+        "Flask",
+        "PostgreSQL / Supabase",
+        "TypeScript",
         "pytest",
         "Playwright",
-        "Selenium",
-        "Git / GitHub",
-        "REST API tasarımı"
+        "GitHub Actions",
+        "Docker",
+        "Git"
       ]
     }
   ],
@@ -104,7 +93,7 @@
       "one_cikan": true,
       "kategori": "Yapay zekâ ve araçlar",
       "veri": "api",
-      "aciklama": "Bilgisayarı sesle yöneten Türkçe asistan. İnternet varken bulut modelini, yokken yerel modeli kullanır; konuşma tanıma bilgisayarında yapılır. Yapay zekâ yalnızca ne yapılacağına karar verir, işi sıradan kod yapar; tehlikeli işlerde onay istenir. 540 otomatik testle doğrulanır.",
+      "aciklama": "Bilgisayarı sesle yöneten Türkçe asistan. İnternet varken bulut modelini, yokken yerel modeli kullanır; konuşma tanıma bilgisayarında yapılır. Yapay zekâ yalnızca ne yapılacağına karar verir, işi sıradan kod yapar; tehlikeli işlerde onay istenir. Yaklaşık 1000 otomatik testle doğrulanır.",
       "etiketler": [
         "Python",
         "Konuşma tanıma",
@@ -121,7 +110,7 @@
       "one_cikan": true,
       "kategori": "Web ve mobil",
       "veri": "api",
-      "aciklama": "Mesajlaşma, hikâyeler ve anketler içeren gerçek zamanlı bir sosyal ağ. Kullanıcı verisi, yetkisi olmayanın göremeyeceği şekilde veritabanı seviyesinde korunur. 303 pytest ve Playwright testiyle doğrulanır.",
+      "aciklama": "Mesajlaşma, hikâyeler, anketler ve bildirimler içeren gerçek zamanlı bir sosyal ağ; aynı API'yi kullanan bir Android uygulaması da var. Yaklaşık 310 pytest ve Playwright uçtan uca testleriyle doğrulanır.",
       "etiketler": [
         "Flask",
         "Supabase",
