@@ -20,7 +20,7 @@
         "tur": "acik"
       }
     ],
-    "hakkinda": "I build my projects with AI coding agents (Claude Code). I set the requirements and product decisions, split the work across agents, and verify the result with automated tests and review.\n\nI graduated in Computer Engineering from Burdur Mehmet Akif Ersoy University. With this approach I've built Turkish voice-controlled desktop assistants, a social network that runs on web and Android, and a stock-analysis system. All of it is public on GitHub. I'm looking for a junior role where I can gain experience in a team.",
+    "hakkinda": "I build my projects with AI coding agents (Claude Code). I set the requirements and product decisions, split the work across agents, and verify the result with automated tests and review.\n\nI graduated in Computer Engineering from Burdur Mehmet Akif Ersoy University. With this approach I've built a Turkish voice-controlled desktop assistant (Jarvis; its code is private for now), a social network that runs on web and Android, and a stock-analysis system. Everything except the assistant is public on GitHub. I'm looking for a junior role where I can gain experience in a team.",
     "site_url": "https://umuterayaltay.github.io/en"
   },
   "kategoriler": [
@@ -87,23 +87,6 @@
     }
   ],
   "repolar": [
-    {
-      "ad": "artemis-ai-assistant",
-      "herkese_acik": true,
-      "one_cikan": true,
-      "kategori": "AI and tools",
-      "veri": "api",
-      "aciklama": "A Turkish voice assistant that controls the computer. It uses a cloud model when online and a local model when not; speech recognition runs on the machine. The AI only decides what to do, ordinary code does the work, and risky actions ask for confirmation. Verified by about 1,000 automated tests.",
-      "etiketler": [
-        "Python",
-        "Speech recognition",
-        "Plugins"
-      ],
-      "led": {
-        "metin": "Works offline",
-        "tur": "acik"
-      }
-    },
     {
       "ad": "Sosyal-Medya-Web",
       "herkese_acik": true,

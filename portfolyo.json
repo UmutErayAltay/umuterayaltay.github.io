@@ -20,7 +20,7 @@
         "tur": "acik"
       }
     ],
-    "hakkinda": "Projelerimi yapay zekâ kodlama ajanlarıyla (Claude Code) geliştiriyorum. Gereksinimleri ve ürün kararlarını ben belirliyorum, işi ajanlara bölüyorum, sonucu otomatik testler ve incelemeyle doğruluyorum.\n\nBurdur Mehmet Akif Ersoy Üniversitesi Bilgisayar Mühendisliği'nden mezunum. Bu yöntemle sesle yönetilen Türkçe masaüstü asistanları, web ve Android'de çalışan bir sosyal ağ ve borsa verisiyle çalışan bir analiz sistemi geliştirdim. Hepsi GitHub'da herkese açık. Ekipte deneyim kazanacağım junior bir pozisyon arıyorum.",
+    "hakkinda": "Projelerimi yapay zekâ kodlama ajanlarıyla (Claude Code) geliştiriyorum. Gereksinimleri ve ürün kararlarını ben belirliyorum, işi ajanlara bölüyorum, sonucu otomatik testler ve incelemeyle doğruluyorum.\n\nBurdur Mehmet Akif Ersoy Üniversitesi Bilgisayar Mühendisliği'nden mezunum. Bu yöntemle sesle yönetilen Türkçe bir masaüstü asistanı (Jarvis; kodu şimdilik özel), web ve Android'de çalışan bir sosyal ağ ve borsa verisiyle çalışan bir analiz sistemi geliştirdim. Asistan dışındaki projeler GitHub'da herkese açık. Ekipte deneyim kazanacağım junior bir pozisyon arıyorum.",
     "site_url": "https://umuterayaltay.github.io"
   },
   "kategoriler": [
@@ -87,23 +87,6 @@
     }
   ],
   "repolar": [
-    {
-      "ad": "artemis-ai-assistant",
-      "herkese_acik": true,
-      "one_cikan": true,
-      "kategori": "Yapay zekâ ve araçlar",
-      "veri": "api",
-      "aciklama": "Bilgisayarı sesle yöneten Türkçe asistan. İnternet varken bulut modelini, yokken yerel modeli kullanır; konuşma tanıma bilgisayarında yapılır. Yapay zekâ yalnızca ne yapılacağına karar verir, işi sıradan kod yapar; tehlikeli işlerde onay istenir. Yaklaşık 1000 otomatik testle doğrulanır.",
-      "etiketler": [
-        "Python",
-        "Konuşma tanıma",
-        "Eklentiler"
-      ],
-      "led": {
-        "metin": "İnternetsiz çalışabilir",
-        "tur": "acik"
-      }
-    },
     {
       "ad": "Sosyal-Medya-Web",
       "herkese_acik": true,
