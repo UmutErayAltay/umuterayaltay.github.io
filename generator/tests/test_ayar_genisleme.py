@@ -113,3 +113,20 @@ def test_baglantilar_varsayilan_bos_ve_gecerli(tmp_path):
 def test_baglantilar_gecersiz(tmp_path, baglantilar):
     with pytest.raises(AyarHatasi, match="baglantilar"):
         _oku(tmp_path, repolar=[{**REPO, "baglantilar": baglantilar}])
+
+
+def test_yerel_gorseller_kabul_edilir(tmp_path):
+    a = _oku(tmp_path, repolar=[{**REPO, "gorseller": [{"yol": "/projeler/demo.png", "aciklama": "Gerçek uygulama, demo veri"}]}])
+    assert a.repolar[0].gorseller == (("/projeler/demo.png", "Gerçek uygulama, demo veri", "tam"),)
+
+
+@pytest.mark.parametrize("yol", ["https://d.example/a.png", "//d.example/a.png", "/../a.png", "/projeler/../a.png", "/projeler//a.png", "/projeler/a.svg", "data:image/png;base64,a", "file:///a.png", "a.png", "/a.png?x=1", ""])
+def test_dis_kaynak_ve_guvensiz_gorsel_yollari_reddedilir(tmp_path, yol):
+    with pytest.raises(AyarHatasi):
+        _oku(tmp_path, repolar=[{**REPO, "gorseller": [{"yol": yol, "aciklama": "Demo"}]}])
+
+
+@pytest.mark.parametrize("gorseller", ["x", [{}], [{"yol": "/a.png", "aciklama": ""}], [{"yol": "/a.png", "aciklama": "a", "onerror": "x"}], [{"yol": "/a.png", "aciklama": "a"}]*4])
+def test_gecersiz_gorsel_listeleri_reddedilir(tmp_path, gorseller):
+    with pytest.raises(AyarHatasi):
+        _oku(tmp_path, repolar=[{**REPO, "gorseller": gorseller}])

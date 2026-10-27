@@ -142,7 +142,7 @@ def test_csp_meta_var():
     cikti = render(_sahte_ayar(), {}, BUGUN)
     assert "default-src 'none'" in cikti
     assert "style-src 'unsafe-inline'" in cikti
-    assert "img-src data:" in cikti
+    assert "img-src 'self' data:" in cikti
     assert "font-src 'self'" in cikti
     assert "base-uri 'none'" in cikti
     assert "form-action 'none'" in cikti
@@ -634,3 +634,14 @@ def test_one_cikan_yokken_proje_basligi_ve_liste_ayrilmaz():
     )
     cikti = render(ayar, {}, BUGUN)
     assert cikti.index('id="projeler"') < cikti.index('>tek-proje</a>') < cikti.index('id="deneyim"')
+
+
+def test_yerel_proje_gorselleri_kacisli_aciklama_ve_istege_bagli_galeri():
+    ayar = _sahte_ayar(repolar=[{"ad": "gorselli", "one_cikan": True}, {"ad": "metin"}])
+    ayar.repolar[0].gorseller = (("/projeler/demo.png", '<script> & "demo"', 'tam'),)
+    cikti = render(ayar, {}, BUGUN)
+    assert '<img src="/projeler/demo.png"' in cikti
+    assert 'alt="&lt;script&gt; &amp; &quot;demo&quot;"' in cikti
+    assert cikti.count('class="proje-gorseller"') == 1
+    assert 'loading="lazy"' in cikti
+    assert tara(cikti) == []

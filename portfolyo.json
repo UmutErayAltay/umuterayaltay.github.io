@@ -16,7 +16,7 @@
         "tur": "eylem"
       }
     ],
-    "hakkinda": "Bilgisayar mühendisliği mezunuyum. Web uygulamaları, geliştirici araçları ve sesli asistanlar üzerine çalışıyorum. İzmir’de, deneyim kazanabileceğim junior bir yazılım pozisyonu arıyorum.\n\nProjelerimde gereksinimleri ve ürün kararlarını belirliyor, yapay zekâ destekli geliştirme araçları kullanıyorum. Sonuçları testler ve kod incelemesiyle kontrol ediyorum.",
+    "hakkinda": "Bilgisayar mühendisliği mezunuyum. Web uygulamaları, geliştirici araçları ve sesli asistanlar üzerine çalışıyorum. İzmir’de, deneyim kazanabileceğim junior bir yazılım pozisyonu arıyorum.",
     "site_url": "https://umuterayaltay.github.io"
   },
   "kategoriler": [
@@ -63,14 +63,6 @@
       ]
     },
     {
-      "grup": "Çalışma biçimi",
-      "ogeler": [
-        "Gereksinim belirleme",
-        "AI destekli geliştirme (Claude Code)",
-        "Test ve kod incelemesi"
-      ]
-    },
-    {
       "grup": "LLM uygulamaları",
       "ogeler": [
         "Araç çağırma",
@@ -82,6 +74,26 @@
     }
   ],
   "repolar": [
+    {
+      "ad": "artemis",
+      "herkese_acik": true,
+      "one_cikan": true,
+      "kategori": "Geliştirici araçları",
+      "veri": "api",
+      "aciklama": "Windows için Türkçe sesli masaüstü asistanı. Sesli komutlar, uygulama araçları, sohbet hafızası ve masaüstü panelini bir araya getiriyor. İşlem adımları ve gerekli onaylar arayüzde görülebiliyor.",
+      "etiketler": [
+        "Python",
+        "PySide6",
+        "Whisper",
+        "MCP"
+      ],
+      "gorseller": [
+        {
+          "yol": "/projeler/artemis-onay.png",
+          "aciklama": "Artemis — işlem onayı, gerçek demo ekranı"
+        }
+      ]
+    },
     {
       "ad": "Sosyal-Medya-Web",
       "herkese_acik": true,
@@ -99,6 +111,16 @@
           "ad": "Android uygulaması",
           "url": "https://github.com/UmutErayAltay/Sosyal-Medya-Mobil"
         }
+      ],
+      "gorseller": [
+        {
+          "yol": "/projeler/sosyal-web.png",
+          "aciklama": "Web uygulaması — örnek verilerle gerçek ekran"
+        },
+        {
+          "yol": "/projeler/sosyal-mobil-web.png",
+          "aciklama": "Mobil web profili — Android uygulaması değildir"
+        }
       ]
     },
     {
@@ -114,6 +136,13 @@
         "FinBERT",
         "FastAPI",
         "PostgreSQL"
+      ],
+      "gorseller": [
+        {
+          "yol": "/projeler/borsa-dashboard.png",
+          "aciklama": "Gerçek panel · Eylül 2026. Görseli açmak için tıkla.",
+          "gorunum": "ust"
+        }
       ]
     },
     {
@@ -159,6 +188,12 @@
       "etiketler": [
         "React",
         "TypeScript"
+      ],
+      "gorseller": [
+        {
+          "yol": "/projeler/sosyal-react.png",
+          "aciklama": "React istemcisi — örnek verilerle gerçek ekran"
+        }
       ]
     },
     {

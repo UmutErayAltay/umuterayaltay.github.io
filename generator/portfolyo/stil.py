@@ -145,6 +145,13 @@ main.raf { padding-bottom: 48px; }
 .alt-not { width: min(calc(100% - 2 * var(--gutter)), var(--max)); margin: 0 auto; padding-block: 22px 32px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 13px; }
 .skip { position: absolute; left: 16px; top: -100px; padding: 12px; background: var(--surface); color: var(--accent); z-index: 10; }
 .skip:focus { top: 12px; }
+.proje-gorseller { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px; }
+.proje-gorseller figure { margin: 0; min-width: 0; }
+.proje-gorseller a { display: flex; justify-content: center; background: var(--surface); border: 1px solid var(--rule); border-radius: 5px; overflow: hidden; }
+.proje-gorseller img { display: block; max-width: 100%; width: auto; height: auto; max-height: 500px; object-fit: contain; object-position: top center; }
+.proje-gorseller .goruntu--ust img { width: 100%; height: clamp(220px, 36vw, 480px); max-height: none; object-fit: cover; }
+.proje-gorseller figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); }
+.satir .proje-gorseller { max-width: 800px; }
 @media (max-width: 950px) {
   .serit .yuz { flex-wrap: wrap; gap: 4px 20px; padding-block: 12px; }
   .menu { order: 4; flex-basis: 100%; gap: 2px 20px; }

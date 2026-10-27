@@ -94,6 +94,7 @@ class Repo:
     baglantilar: tuple[tuple[str, str], ...] = ()  # (ad, https url): demo/doküman düğmeleri
     one_cikan: bool = False
     led: Led | None = None  # kart düğmesi (sahip.ledler ile aynı kurallar)
+    gorseller: tuple[tuple[str, str, str], ...] = ()  # (raster yolu, açıklama, görünüm)
 
 
 @dataclass(frozen=True)
@@ -129,6 +130,7 @@ _EPOSTA_DESENI = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 _LINKEDIN_DESENI = re.compile(r"^https://(?:www\.)?linkedin\.com(?:/[^?#\s]*)?(?:\?[^\s#]*)?(?:#\S*)?$")
 # KÖK-göreli yollar: `..` ve `//` yasak (dizin dışına çıkış / protokol-göreli kaçış).
 _KOK_YOL_DESENI = re.compile(r"^/[A-Za-z0-9_/-]*$")
+_KOK_GORSEL_DESENI = re.compile(r"^/[A-Za-z0-9_/-]+\.(?:png|webp|jpg|jpeg)$")
 _KOK_PDF_DESENI = re.compile(r"^/[A-Za-z0-9._/-]+\.pdf$")
 
 _MAKS_HAKKINDA = 1200
@@ -320,7 +322,7 @@ def _repo_dogrula(
         raise AyarHatasi(f"{alan_yolu}: nesne bekleniyor")
 
     # Bilinmeyen alan kontrolü
-    taninan_alanlar = {"ad", "herkese_acik", "aciklama", "etiketler", "klon", "readme", "kategori", "veri", "baglantilar", "one_cikan", "led"}
+    taninan_alanlar = {"ad", "herkese_acik", "aciklama", "etiketler", "klon", "readme", "kategori", "veri", "baglantilar", "one_cikan", "led", "gorseller"}
     for anahtar in obj:
         if anahtar not in taninan_alanlar:
             raise AyarHatasi(f"{alan_yolu}.{anahtar}: tanınmayan alan")
@@ -420,6 +422,7 @@ def _repo_dogrula(
         baglantilar=baglantilar,
         one_cikan=one_cikan,
         led=led,
+        gorseller=_gorseller_dogrula(obj.get("gorseller", []), f"{alan_yolu}.gorseller"),
     )
 
 
@@ -444,6 +447,24 @@ def _baglantilar_dogrula(liste: object, alan_yolu: str) -> tuple[tuple[str, str]
             raise AyarHatasi(f"{yol}.url: yalnız https:// adresi olabilir")
         sonuc.append((ad, url))
     return tuple(sonuc)
+
+
+def _gorseller_dogrula(liste: object, alan_yolu: str) -> tuple[tuple[str, str, str], ...]:
+    """En fazla üç yerel raster; uzak adres, traversal ve çalıştırılabilir SVG kabul edilmez."""
+    nesneler = _nesne_listesi_dogrula(liste, alan_yolu, ("yol", "aciklama", "gorunum"), ("yol", "aciklama"))
+    if len(nesneler) > 3:
+        raise AyarHatasi(f"{alan_yolu}: en fazla 3 görsel")
+    for o in nesneler:
+        if o.get("gorunum", "tam") not in ("tam", "ust"):
+            raise AyarHatasi(f"{alan_yolu}: görünüm tam veya ust olmalı")
+    return tuple(
+        (
+            _kok_yol_dogrula(o["yol"], f"{alan_yolu}[{i}].yol", _KOK_GORSEL_DESENI, 160, True),
+            _metin_dogrula(o["aciklama"], f"{alan_yolu}[{i}].aciklama", 160, bos_olamaz=True),
+            o.get("gorunum", "tam"),
+        )
+        for i, o in enumerate(nesneler)
+    )
 
 
 def _kategoriler_dogrula(liste: object) -> tuple[str, ...]:

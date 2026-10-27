@@ -16,7 +16,7 @@
         "tur": "eylem"
       }
     ],
-    "hakkinda": "I’m a computer engineering graduate working on web applications, developer tools and voice assistants. I’m based in İzmir and looking for a junior software role where I can gain experience.\n\nI define requirements and product decisions, use AI-assisted development tools, and check the results through tests and code review.",
+    "hakkinda": "I’m a computer engineering graduate working on web applications, developer tools and voice assistants. I’m based in İzmir and looking for a junior software role where I can gain experience.",
     "site_url": "https://umuterayaltay.github.io/en"
   },
   "kategoriler": [
@@ -63,14 +63,6 @@
       ]
     },
     {
-      "grup": "Working methods",
-      "ogeler": [
-        "Defining requirements",
-        "AI-assisted development (Claude Code)",
-        "Tests and code review"
-      ]
-    },
-    {
       "grup": "LLM applications",
       "ogeler": [
         "Tool calling",
@@ -82,6 +74,26 @@
     }
   ],
   "repolar": [
+    {
+      "ad": "artemis",
+      "herkese_acik": true,
+      "one_cikan": true,
+      "kategori": "Developer tools",
+      "veri": "api",
+      "aciklama": "A Turkish voice assistant for Windows. Combines voice commands, application tools, conversation memory and a desktop panel, with visible operation steps and approvals.",
+      "etiketler": [
+        "Python",
+        "PySide6",
+        "Whisper",
+        "MCP"
+      ],
+      "gorseller": [
+        {
+          "yol": "/projeler/artemis-onay.png",
+          "aciklama": "Artemis — operation approval, actual demo UI"
+        }
+      ]
+    },
     {
       "ad": "Sosyal-Medya-Web",
       "herkese_acik": true,
@@ -99,6 +111,16 @@
           "ad": "Android app",
           "url": "https://github.com/UmutErayAltay/Sosyal-Medya-Mobil"
         }
+      ],
+      "gorseller": [
+        {
+          "yol": "/projeler/sosyal-web.png",
+          "aciklama": "Web application — actual UI with sample data"
+        },
+        {
+          "yol": "/projeler/sosyal-mobil-web.png",
+          "aciklama": "Responsive web profile — not the Android application"
+        }
       ]
     },
     {
@@ -114,6 +136,13 @@
         "FinBERT",
         "FastAPI",
         "PostgreSQL"
+      ],
+      "gorseller": [
+        {
+          "yol": "/projeler/borsa-dashboard.png",
+          "aciklama": "Actual dashboard · September 2026. Open image for the full view.",
+          "gorunum": "ust"
+        }
       ]
     },
     {
@@ -159,6 +188,12 @@
       "etiketler": [
         "React",
         "TypeScript"
+      ],
+      "gorseller": [
+        {
+          "yol": "/projeler/sosyal-react.png",
+          "aciklama": "React client — actual UI with sample data"
+        }
       ]
     },
     {

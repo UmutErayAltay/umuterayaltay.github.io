@@ -17,11 +17,11 @@ from .metin import m
 from .stil import CSS
 
 
-# CSP: default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src 'self'; base-uri 'none'; form-action 'none'
+# CSP: default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'
 _CSP = (
     "default-src 'none'; "
     "style-src 'unsafe-inline'; "
-    "img-src data:; "
+    "img-src 'self' data:; "
     "font-src 'self'; "
     "base-uri 'none'; "
     "form-action 'none'"
@@ -354,6 +354,23 @@ def _baglar(repo_cfg: object) -> str:
     return f'<div class="baglar">{"".join(parcalar)}</div>' if parcalar else ""
 
 
+def _gorseller(repo_cfg: object) -> str:
+    """Gerçek proje görüntülerini yerel dosyalarından, açıklamalarıyla gösterir."""
+    gorseller = getattr(repo_cfg, "gorseller", ()) or ()
+    if not gorseller:
+        return ""
+    parcalar = []
+    for yol, aciklama, gorunum in gorseller:
+        yol = _escape_all(yol)
+        aciklama = _escape_all(aciklama)
+        parcalar.append(
+            f'<figure class="goruntu--{_escape_all(gorunum)}"><a href="{yol}" target="_blank" rel="noopener noreferrer">'
+            f'<img src="{yol}" alt="{aciklama}" loading="lazy" decoding="async"></a>'
+            f'<figcaption>{aciklama}</figcaption></figure>'
+        )
+    return f'<div class="proje-gorseller">{"".join(parcalar)}</div>'
+
+
 def _kart_html(repo_cfg: object, veri: object | None, seviye: int = 3, dil: str = "tr") -> str:
     """Öne çıkan ünite (`.unit.one`): ad, açıklama, etiketler, bağlantılar."""
     ad = _escape_all(getattr(repo_cfg, "ad", ""))
@@ -363,7 +380,7 @@ def _kart_html(repo_cfg: object, veri: object | None, seviye: int = 3, dil: str 
         f'<p class="pr-aciklama">{_escape_all(getattr(repo_cfg, "aciklama", ""))}</p></div>'
     )
     sag = f'<div class="proje-detay"><h4>{_escape_all(m(dil, "teknoloji"))}</h4>{_yigin(getattr(repo_cfg, "etiketler", ()))}{_repo_led(repo_cfg)}{_baglar(repo_cfg)}</div>'
-    return _unit("one", sol + sag)
+    return _unit("one", sol + sag + _gorseller(repo_cfg))
 
 
 def _repo_led(repo_cfg: object) -> str:
@@ -385,7 +402,7 @@ def _satir_html(repo_cfg: object, veri: object | None, dil: str = "tr") -> str:
         f'<div class="satir"><div><h4><a href="{url}" rel="noopener noreferrer" target="_blank">{ad}</a></h4></div>'
         f'<div><p>{_escape_all(getattr(repo_cfg, "aciklama", ""))}</p>'
         f'{_yigin(getattr(repo_cfg, "etiketler", ()))}</div>'
-        f'<div>{_baglar(repo_cfg)}</div></div>'
+        f'<div>{_baglar(repo_cfg)}</div>{_gorseller(repo_cfg)}</div>'
     )
 
 
