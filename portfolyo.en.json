@@ -86,12 +86,6 @@
         "PySide6",
         "Whisper",
         "MCP"
-      ],
-      "gorseller": [
-        {
-          "yol": "/projeler/artemis-onay.png",
-          "aciklama": "Artemis — operation approval, actual demo UI"
-        }
       ]
     },
     {
@@ -111,16 +105,6 @@
           "ad": "Android app",
           "url": "https://github.com/UmutErayAltay/Sosyal-Medya-Mobil"
         }
-      ],
-      "gorseller": [
-        {
-          "yol": "/projeler/sosyal-web.png",
-          "aciklama": "Web application — actual UI with sample data"
-        },
-        {
-          "yol": "/projeler/sosyal-mobil-web.png",
-          "aciklama": "Responsive web profile — not the Android application"
-        }
       ]
     },
     {
@@ -136,13 +120,6 @@
         "FinBERT",
         "FastAPI",
         "PostgreSQL"
-      ],
-      "gorseller": [
-        {
-          "yol": "/projeler/borsa-dashboard.png",
-          "aciklama": "Actual dashboard · September 2026. Open image for the full view.",
-          "gorunum": "ust"
-        }
       ]
     },
     {
@@ -188,12 +165,6 @@
       "etiketler": [
         "React",
         "TypeScript"
-      ],
-      "gorseller": [
-        {
-          "yol": "/projeler/sosyal-react.png",
-          "aciklama": "React client — actual UI with sample data"
-        }
       ]
     },
     {

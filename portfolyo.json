@@ -86,12 +86,6 @@
         "PySide6",
         "Whisper",
         "MCP"
-      ],
-      "gorseller": [
-        {
-          "yol": "/projeler/artemis-onay.png",
-          "aciklama": "Artemis — işlem onayı, gerçek demo ekranı"
-        }
       ]
     },
     {
@@ -111,16 +105,6 @@
           "ad": "Android uygulaması",
           "url": "https://github.com/UmutErayAltay/Sosyal-Medya-Mobil"
         }
-      ],
-      "gorseller": [
-        {
-          "yol": "/projeler/sosyal-web.png",
-          "aciklama": "Web uygulaması — örnek verilerle gerçek ekran"
-        },
-        {
-          "yol": "/projeler/sosyal-mobil-web.png",
-          "aciklama": "Mobil web profili — Android uygulaması değildir"
-        }
       ]
     },
     {
@@ -136,13 +120,6 @@
         "FinBERT",
         "FastAPI",
         "PostgreSQL"
-      ],
-      "gorseller": [
-        {
-          "yol": "/projeler/borsa-dashboard.png",
-          "aciklama": "Gerçek panel · Eylül 2026. Görseli açmak için tıkla.",
-          "gorunum": "ust"
-        }
       ]
     },
     {
@@ -188,12 +165,6 @@
       "etiketler": [
         "React",
         "TypeScript"
-      ],
-      "gorseller": [
-        {
-          "yol": "/projeler/sosyal-react.png",
-          "aciklama": "React istemcisi — örnek verilerle gerçek ekran"
-        }
       ]
     },
     {

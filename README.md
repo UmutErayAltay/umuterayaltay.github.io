@@ -25,5 +25,3 @@ python -m portfolyo uret portfolyo.en.json --api --cikti _site/en
 Copy-Item statik\* _site -Recurse -Force
 python -m http.server 8000 -d _site
 ```
-
-Proje görüntüleri `statik/projeler/` altında aynı kökenden sunulur; kaynaklar ve demo/tarihsel görüntü ayrımları [KAYNAKLAR.md](statik/projeler/KAYNAKLAR.md) dosyasındadır. Üretilmiş taslak arayüzler gerçek uygulama görüntüsü olarak kullanılmaz.
