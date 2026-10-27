@@ -1,4 +1,4 @@
-"""Tek dosyalık statik portfolyo HTML üreticisi (Cihaz Rafı tasarımı).
+"""Tek dosyalık statik portfolyo HTML üreticisi (proje dosyası tasarımı).
 
 JavaScript yok, dış kaynak (font/CDN/analitik) yok. CSP meta etiketiyle kilitli.
 Stil `stil.py`'den (CSS), sabit etiketler `metin.py`'den gelir; içerik yapılandırmadan.
@@ -110,9 +110,9 @@ def _favicon(ad: str) -> str:
     harf = html.escape(next((c for c in ad if c.strip()), "•").upper(), quote=True)
     svg = (
         "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>"
-        "<rect width='32' height='32' rx='7' fill='#1b1c1e'/>"
+        "<rect width='32' height='32' rx='7' fill='#173b56'/>"
         "<text x='16' y='23' font-size='20' font-family='sans-serif' font-weight='700' "
-        f"text-anchor='middle' fill='#e8a317'>{harf}</text></svg>"
+        f"text-anchor='middle' fill='#f8fafb'>{harf}</text></svg>"
     )
     return f'<link rel="icon" href="data:image/svg+xml,{urllib.parse.quote(svg, safe="")}">'
 
@@ -129,8 +129,8 @@ def _meta(
         f'<meta property="og:type" content="{tur}">',
         f'<meta property="og:locale" content="{_escape_all(m(dil, "locale"))}">',
         f'<meta name="twitter:card" content="{"summary_large_image" if og_gorsel else "summary"}">',
-        '<meta name="theme-color" content="#b3afa4" media="(prefers-color-scheme: light)">',
-        '<meta name="theme-color" content="#08090a" media="(prefers-color-scheme: dark)">',
+        '<meta name="theme-color" content="#f8fafb" media="(prefers-color-scheme: light)">',
+        '<meta name="theme-color" content="#111e29" media="(prefers-color-scheme: dark)">',
     ]
     if url:
         satirlar.append(f'<meta property="og:url" content="{_escape_all(url)}">')
@@ -189,12 +189,9 @@ def _belge(
 # --- ortak parçalar ----------------------------------------------------------------------
 
 def _unit(sinif: str, icerik: str) -> str:
-    """1U ünite: iki dekoratif kulak + yüzey. `sinif` boşsa yalnız `unit`."""
+    """1U ünite: yüzey. `sinif` boşsa yalnız `unit`."""
     tam = f"unit {sinif}".strip()
-    return (
-        f'<section class="{tam}"><i class="kulak" aria-hidden="true"></i>'
-        f'<div class="yuz">{icerik}</div><i class="kulak" aria-hidden="true"></i></section>'
-    )
+    return f'<section class="{tam}"><div class="yuz">{icerik}</div></section>'
 
 
 def _ray(baslik: str, kimlik: str = "", sag: str = "", *, sinif: str = "") -> str:
@@ -358,22 +355,14 @@ def _baglar(repo_cfg: object) -> str:
 
 
 def _kart_html(repo_cfg: object, veri: object | None, seviye: int = 3, dil: str = "tr") -> str:
-    """Öne çıkan ünite (`.unit.one`): ad, açıklama, etiketler, bağlantılar, ölçer."""
+    """Öne çıkan ünite (`.unit.one`): ad, açıklama, etiketler, bağlantılar."""
     ad = _escape_all(getattr(repo_cfg, "ad", ""))
     url = _escape_all(getattr(repo_cfg, "url", ""))
     sol = (
-        f'<div><h{seviye} class="pr-ad"><a href="{url}" rel="noopener noreferrer" target="_blank">{ad}</a></h{seviye}>'
-        f'<p class="pr-aciklama">{_escape_all(getattr(repo_cfg, "aciklama", ""))}</p>'
-        f'{_yigin(getattr(repo_cfg, "etiketler", ()))}{_repo_led(repo_cfg)}{_baglar(repo_cfg)}</div>'
+        f'<div class="proje-ozet"><h{seviye} class="pr-ad"><a href="{url}" rel="noopener noreferrer" target="_blank">{ad}</a></h{seviye}>'
+        f'<p class="pr-aciklama">{_escape_all(getattr(repo_cfg, "aciklama", ""))}</p></div>'
     )
-    sag = ""
-    if veri is not None:
-        sag = (
-            f'<div class="olcer">{_olcer_pencere(veri, dil, eksenli=True)}'
-            f'<div class="olcer-rakam"><b>{_escape_all(getattr(veri, "commit_sayisi", 0))}</b>'
-            f'<span>{_escape_all(m(dil, "commit"))}</span></div>'
-            f'<p class="olcer-tarih">{_escape_all(m(dil, "son_commit"))} {_escape_all(_son_commit(veri))}</p></div>'
-        )
+    sag = f'<div class="proje-detay"><h4>{_escape_all(m(dil, "teknoloji"))}</h4>{_yigin(getattr(repo_cfg, "etiketler", ()))}{_repo_led(repo_cfg)}{_baglar(repo_cfg)}</div>'
     return _unit("one", sol + sag)
 
 
@@ -389,15 +378,14 @@ def _repo_led(repo_cfg: object) -> str:
 
 
 def _satir_html(repo_cfg: object, veri: object | None, dil: str = "tr") -> str:
-    """1U satır: ad, açıklama + etiketler, ölçer, commit sayısı."""
+    """1U satır: ad, açıklama + etiketler, bağlantılar."""
     ad = _escape_all(getattr(repo_cfg, "ad", ""))
     url = _escape_all(getattr(repo_cfg, "url", ""))
     return (
         f'<div class="satir"><div><h4><a href="{url}" rel="noopener noreferrer" target="_blank">{ad}</a></h4></div>'
         f'<div><p>{_escape_all(getattr(repo_cfg, "aciklama", ""))}</p>'
         f'{_yigin(getattr(repo_cfg, "etiketler", ()))}</div>'
-        f'{_olcer_pencere(veri, dil, eksenli=False)}'
-        f'{_sayi(veri, dil)}</div>'
+        f'<div>{_baglar(repo_cfg)}</div></div>'
     )
 
 
@@ -478,21 +466,17 @@ def _hero(ayar, dil: str, veriler: Mapping[str, object | None] | None = None) ->
         for parca in str(getattr(sahip, "hakkinda", "")).split("\n\n")
         if parca.strip()
     )
-    sol = f'<div>{h1}{unvan}{paragraflar}</div>'
-
-    konum = getattr(sahip, "konum", "") or ""  # konum LED değil: sönük LED "kapalı" okunur, düz serigraf yazı
     ledler = "".join(
         f'<li class="led{_led_sinif(getattr(led, "tur", ""))}">{_escape_all(getattr(led, "metin", ""))}</li>'
         for led in list(getattr(sahip, "ledler", ()) or ())
     )
     led_html = f'<ul class="ledler">{ledler}</ul>' if ledler else ""
+    konum = getattr(sahip, "konum", "") or ""
     konum_html = f'<p class="konum">{_escape_all(konum)}</p>' if konum else ""
-    toplam = _toplam_olcer(ayar, veriler or {}, dil)
     cv_not = _cv_not(ayar, dil)
-    return _unit(
-        "hero",
-        f'{sol}<div class="kontrol">{toplam}{led_html}{konum_html}<div class="tuslar">{_hero_dugmeleri(ayar, dil)}</div>{cv_not}</div>',
-    )
+    sol = f'<div>{h1}{unvan}{led_html}{konum_html}<div class="tuslar">{_hero_dugmeleri(ayar, dil)}</div>{cv_not}</div>'
+    sag = f'<div>{paragraflar}</div>'
+    return _unit("hero", sol + sag)
 
 
 def _led_sinif(tur: object) -> str:
@@ -564,7 +548,7 @@ def render(
     ayar, veriler: Mapping[str, object | None], bugun: date, yazilar: Sequence[object] = (),
     og_gorsel: str | None = None, feed: bool = False,
 ) -> str:
-    """Ana sayfa HTML'ini üretir (şerit, hero, öne çıkanlar, diğer projeler, deneyim, yetenekler, yazılar, iletişim)."""
+    """Ana sayfa HTML'ini üretir (şerit, hero, öne çıkanlar, deneyim, eğitim, diğer projeler, yetenekler, yazılar, iletişim)."""
     dil = getattr(ayar, "dil", "tr") or "tr"
     sahip = getattr(ayar, "sahip", None)
     ad = str(getattr(sahip, "ad", ""))
@@ -579,22 +563,27 @@ def render(
         _ray(
             _escape_all(m(dil, "oneci_baslik" if oneciler else "diger_baslik")),
             "projeler",
-            f"<p>{_escape_all(m(dil, 'oneci_alt'))}</p>" if oneciler else "",
+            f"<p>{_escape_all(m(dil, 'oneci_alt'))}</p>" if oneciler and m(dil, 'oneci_alt') else "",
             sinif="ray--raf",
         ),
     ]
     if oneciler:
         parcalar += [_kart_html(o["repo_cfg"], o["veri"], 3, dil) for o in oneciler]
 
+    diger_html = ""
     if _gruplar(ayar, digerleri):
-        # "Diğer projeler" başlığı yalnız öne çıkan bölüm varsa ayrı ray olarak durur
         ic = _ray(_escape_all(m(dil, "diger_baslik")), "diger") if oneciler else ""
-        parcalar.append(_unit("", ic + _diger_bolum(ayar, digerleri, dil)))
+        diger_html = _unit("", ic + _diger_bolum(ayar, digerleri, dil))
+    if not oneciler and diger_html:
+        parcalar.append(diger_html)
 
     deneyim = _kayit_bolumu(getattr(ayar, "deneyim", ()), "deneyim_baslik", "deneyim", dil)
     egitim = _kayit_bolumu(getattr(ayar, "egitim", ()), "egitim_baslik", "egitim", dil)
     if deneyim or egitim:
         parcalar.append(f'<div class="iki">{deneyim}{egitim}</div>')
+
+    if oneciler and diger_html:
+        parcalar.append(diger_html)
 
     yetenek = _yetenek_bolumu(ayar, dil)
     if yetenek:

@@ -3,7 +3,7 @@
   "dil_baglantisi": "/",
   "sahip": {
     "ad": "Umut Eray Altay",
-    "unvan": "Junior AI application developer",
+    "unvan": "Junior software developer",
     "github": "UmutErayAltay",
     "eposta": "altayumuteray@gmail.com",
     "linkedin": "https://www.linkedin.com/in/umut-eray-altay-87a50a211",
@@ -14,17 +14,13 @@
       {
         "metin": "Open to work",
         "tur": "eylem"
-      },
-      {
-        "metin": "Runs offline",
-        "tur": "acik"
       }
     ],
-    "hakkinda": "I build my projects with AI coding agents (Claude Code). I set the requirements and product decisions, split the work across agents, and verify the result with automated tests and review.\n\nI graduated in Computer Engineering from Burdur Mehmet Akif Ersoy University. With this approach I've built a Turkish voice-controlled desktop assistant (Jarvis; its code is private for now), a social network that runs on web and Android, and a stock-analysis system. Everything except the assistant is public on GitHub. I'm looking for a junior role where I can gain experience in a team.",
+    "hakkinda": "I’m a computer engineering graduate working on web applications, developer tools and voice assistants. I’m based in İzmir and looking for a junior software role where I can gain experience.\n\nI define requirements and product decisions, use AI-assisted development tools, and check the results through tests and code review.",
     "site_url": "https://umuterayaltay.github.io/en"
   },
   "kategoriler": [
-    "AI and tools",
+    "Developer tools",
     "Web and mobile",
     "Data and finance"
   ],
@@ -47,25 +43,6 @@
   ],
   "yetenekler": [
     {
-      "grup": "AI-assisted development",
-      "ogeler": [
-        "Claude Code",
-        "Task definition",
-        "Agent orchestration",
-        "Test-driven verification"
-      ]
-    },
-    {
-      "grup": "LLM applications",
-      "ogeler": [
-        "Tool calling",
-        "MCP",
-        "Ollama",
-        "OpenRouter / Anthropic API",
-        "Prompt-injection awareness"
-      ]
-    },
-    {
       "grup": "Programming",
       "ogeler": [
         "Python (basic)"
@@ -84,6 +61,24 @@
         "Docker",
         "Git"
       ]
+    },
+    {
+      "grup": "Working methods",
+      "ogeler": [
+        "Defining requirements",
+        "AI-assisted development (Claude Code)",
+        "Tests and code review"
+      ]
+    },
+    {
+      "grup": "LLM applications",
+      "ogeler": [
+        "Tool calling",
+        "MCP",
+        "Ollama",
+        "OpenRouter / Anthropic API",
+        "Prompt-injection awareness"
+      ]
     }
   ],
   "repolar": [
@@ -93,11 +88,17 @@
       "one_cikan": true,
       "kategori": "Web and mobile",
       "veri": "api",
-      "aciklama": "A real-time social network with messaging, stories, polls and notifications, plus an Android app on the same API. Verified by about 310 pytest tests and Playwright end-to-end tests.",
+      "aciklama": "A social network for web and Android. Messaging, stories, polls and notifications share the same API. The project includes pytest and Playwright tests.",
       "etiketler": [
         "Flask",
         "Supabase",
         "Playwright"
+      ],
+      "baglantilar": [
+        {
+          "ad": "Android app",
+          "url": "https://github.com/UmutErayAltay/Sosyal-Medya-Mobil"
+        }
       ]
     },
     {
@@ -106,7 +107,7 @@
       "one_cikan": true,
       "kategori": "Data and finance",
       "veri": "api",
-      "aciklama": "Collects price and news data for BIST and US stocks, produces news sentiment and price forecasts with AI, backtests the strategy on historical data (commissions and costs included) and paper-trades it. Not investment advice.",
+      "aciklama": "Price and news analysis for BIST and US stocks. Combines news sentiment and return forecasts with historical backtests, including trading costs, and paper trading. Not investment advice.",
       "etiketler": [
         "Python",
         "XGBoost",
@@ -118,9 +119,9 @@
     {
       "ad": "claude-openrouter",
       "herkese_acik": true,
-      "kategori": "AI and tools",
+      "kategori": "Developer tools",
       "veri": "api",
-      "aciklama": "A small local program that makes the other AI models on OpenRouter selectable in Claude Code. Your keys never leave your machine.",
+      "aciklama": "A local tool for using OpenRouter models in Claude Code. Manages model selection and provider configuration.",
       "etiketler": [
         "TypeScript",
         "OpenRouter",
@@ -130,7 +131,7 @@
     {
       "ad": "kule",
       "herkese_acik": true,
-      "kategori": "AI and tools",
+      "kategori": "Developer tools",
       "veri": "api",
       "aciklama": "A local control panel that shows the state of developer tools and projects on one screen. Tools open as tabs and unused ones close themselves.",
       "etiketler": [

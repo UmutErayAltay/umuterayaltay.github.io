@@ -3,7 +3,7 @@
   "dil_baglantisi": "/en/",
   "sahip": {
     "ad": "Umut Eray Altay",
-    "unvan": "Junior yapay zekâ uygulama geliştirici",
+    "unvan": "Junior yazılım geliştirici",
     "github": "UmutErayAltay",
     "eposta": "altayumuteray@gmail.com",
     "linkedin": "https://www.linkedin.com/in/umut-eray-altay-87a50a211",
@@ -14,17 +14,13 @@
       {
         "metin": "İş arıyorum",
         "tur": "eylem"
-      },
-      {
-        "metin": "Çevrimdışı çalışabilir",
-        "tur": "acik"
       }
     ],
-    "hakkinda": "Projelerimi yapay zekâ kodlama ajanlarıyla (Claude Code) geliştiriyorum. Gereksinimleri ve ürün kararlarını ben belirliyorum, işi ajanlara bölüyorum, sonucu otomatik testler ve incelemeyle doğruluyorum.\n\nBurdur Mehmet Akif Ersoy Üniversitesi Bilgisayar Mühendisliği'nden mezunum. Bu yöntemle sesle yönetilen Türkçe bir masaüstü asistanı (Jarvis; kodu şimdilik özel), web ve Android'de çalışan bir sosyal ağ ve borsa verisiyle çalışan bir analiz sistemi geliştirdim. Asistan dışındaki projeler GitHub'da herkese açık. Ekipte deneyim kazanacağım junior bir pozisyon arıyorum.",
+    "hakkinda": "Bilgisayar mühendisliği mezunuyum. Web uygulamaları, geliştirici araçları ve sesli asistanlar üzerine çalışıyorum. İzmir’de, deneyim kazanabileceğim junior bir yazılım pozisyonu arıyorum.\n\nProjelerimde gereksinimleri ve ürün kararlarını belirliyor, yapay zekâ destekli geliştirme araçları kullanıyorum. Sonuçları testler ve kod incelemesiyle kontrol ediyorum.",
     "site_url": "https://umuterayaltay.github.io"
   },
   "kategoriler": [
-    "Yapay zekâ ve araçlar",
+    "Geliştirici araçları",
     "Web ve mobil",
     "Veri ve finans"
   ],
@@ -47,25 +43,6 @@
   ],
   "yetenekler": [
     {
-      "grup": "Yapay zekâ ile geliştirme",
-      "ogeler": [
-        "Claude Code",
-        "Görev tanımlama",
-        "Ajan yönetimi",
-        "Test odaklı doğrulama"
-      ]
-    },
-    {
-      "grup": "LLM uygulamaları",
-      "ogeler": [
-        "Araç çağırma",
-        "MCP",
-        "Ollama",
-        "OpenRouter / Anthropic API",
-        "Prompt injection farkındalığı"
-      ]
-    },
-    {
       "grup": "Programlama",
       "ogeler": [
         "Python (temel)"
@@ -84,6 +61,24 @@
         "Docker",
         "Git"
       ]
+    },
+    {
+      "grup": "Çalışma biçimi",
+      "ogeler": [
+        "Gereksinim belirleme",
+        "AI destekli geliştirme (Claude Code)",
+        "Test ve kod incelemesi"
+      ]
+    },
+    {
+      "grup": "LLM uygulamaları",
+      "ogeler": [
+        "Araç çağırma",
+        "MCP",
+        "Ollama",
+        "OpenRouter / Anthropic API",
+        "Prompt injection farkındalığı"
+      ]
     }
   ],
   "repolar": [
@@ -93,11 +88,17 @@
       "one_cikan": true,
       "kategori": "Web ve mobil",
       "veri": "api",
-      "aciklama": "Mesajlaşma, hikâyeler, anketler ve bildirimler içeren gerçek zamanlı bir sosyal ağ; aynı API'yi kullanan bir Android uygulaması da var. Yaklaşık 310 pytest ve Playwright uçtan uca testleriyle doğrulanır.",
+      "aciklama": "Web ve Android’de çalışan bir sosyal ağ. Mesajlaşma, hikâyeler, anketler ve bildirimler aynı API üzerinden çalışıyor. Projede pytest ve Playwright ile testler bulunuyor.",
       "etiketler": [
         "Flask",
         "Supabase",
         "Playwright"
+      ],
+      "baglantilar": [
+        {
+          "ad": "Android uygulaması",
+          "url": "https://github.com/UmutErayAltay/Sosyal-Medya-Mobil"
+        }
       ]
     },
     {
@@ -106,7 +107,7 @@
       "one_cikan": true,
       "kategori": "Veri ve finans",
       "veri": "api",
-      "aciklama": "BIST ve ABD hisseleri için fiyat ve haber verisi toplar; haberlerin duygusunu ve fiyat tahminini yapay zekâyla üretir, stratejiyi geçmiş veride (komisyon ve maliyetler dahil) sınar ve sanal alım-satım yapar. Yatırım tavsiyesi değildir.",
+      "aciklama": "BIST ve ABD hisseleri için fiyat ve haber analizi. Haber duygu analizi ve getiri tahminlerini, işlem maliyetlerini de içeren geçmiş veri testleri ve sanal alım-satımla bir araya getiriyor. Yatırım tavsiyesi değildir.",
       "etiketler": [
         "Python",
         "XGBoost",
@@ -118,9 +119,9 @@
     {
       "ad": "claude-openrouter",
       "herkese_acik": true,
-      "kategori": "Yapay zekâ ve araçlar",
+      "kategori": "Geliştirici araçları",
       "veri": "api",
-      "aciklama": "Claude Code'a OpenRouter'daki diğer yapay zekâ modellerini de seçilebilir yapan küçük yerel program. Anahtarların bilgisayarından çıkmaz.",
+      "aciklama": "Claude Code’da OpenRouter modellerini kullanmak için yerel bir araç. Model seçimi ve sağlayıcı yapılandırmasını yönetiyor.",
       "etiketler": [
         "TypeScript",
         "OpenRouter",
@@ -130,7 +131,7 @@
     {
       "ad": "kule",
       "herkese_acik": true,
-      "kategori": "Yapay zekâ ve araçlar",
+      "kategori": "Geliştirici araçları",
       "veri": "api",
       "aciklama": "Geliştirici araçlarının ve projelerin durumunu tek ekranda gösteren yerel kontrol paneli. Araçlar sekme olarak açılır, kullanılmayanlar kendiliğinden kapanır.",
       "etiketler": [

@@ -130,9 +130,10 @@ def test_tek_h1_ve_baslik_sirasi():
     assert atlanan == [], f"atlanan seviye: {atlanan}"
 
 
-def test_dekoratif_kulaklar_aria_hidden():
+def test_dekoratif_donanim_isaretleri_yok():
     cikti = render(_sahte_ayar(), {}, BUGUN)
-    assert cikti.count('<i class="kulak" aria-hidden="true"></i>') >= 2
+    assert '<i class="kulak"' not in cikti
+    assert '<main class="raf" id="icerik">' in cikti
 
 
 # --- CSP ve güvenlik ----------------------------------------------------------------------
@@ -200,8 +201,8 @@ def test_meta_etiketleri_ve_og_url():
     assert '<meta property="og:url" content="https://ada.github.io/">' in cikti
     assert '<meta property="og:locale" content="tr_TR">' in cikti
     assert '<meta name="twitter:card" content="summary">' in cikti
-    assert 'name="theme-color" content="#b3afa4"' in cikti
-    assert 'name="theme-color" content="#08090a"' in cikti
+    assert 'name="theme-color" content="#f8fafb"' in cikti
+    assert 'name="theme-color" content="#111e29"' in cikti
     assert "og:image" not in cikti
 
 
@@ -230,7 +231,8 @@ def test_favicon_kare_renkleri_ve_kacis():
     cikti = render(_sahte_ayar(sahip_ad="<b>"), {}, BUGUN)
     ikon = re.search(r'rel="icon" href="([^"]+)"', cikti).group(1)
     assert "%3Cb%3E" not in ikon
-    assert "#1b1c1e" in cikti and "#e8a317" in cikti
+    from urllib.parse import unquote
+    assert "#173b56" in unquote(ikon) and "#f8fafb" in unquote(ikon)
 
 
 # --- projeler: öne çıkan / satır ------------------------------------------------------------
@@ -319,15 +321,14 @@ def test_konum_led_degil_duz_yazidir():
     assert ">Bursa</li>" not in cikti
 
 
-def test_repo_led_ve_toplam_olcer():
+def test_proje_durumu_korunur_commit_sayaci_gosterilmez():
     ayar = _sahte_ayar(repolar=[{"ad": "bir", "one_cikan": True}, {"ad": "iki"}])
     ayar.repolar[0].led = SimpleNamespace(metin="Yerelde çalışır", tur="acik")
     veriler = {"bir": _veri(haftalik=(1,) * 12), "iki": _veri(haftalik=(2,) * 12)}
     cikti = render(ayar, veriler, BUGUN)
-    assert '<ul class="ledler pr-durum"><li class="led led--acik">Yerelde çalışır</li></ul>' in cikti
-    assert 'class="olcer-toplam"' in cikti
-    assert "3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3" in cikti  # 1 + 2 toplamı
-    assert 'class="olcer-toplam"' not in render(ayar, {}, BUGUN)  # veri yoksa toplam ölçer yok
+    assert 'Yerelde çalışır</li>' in cikti
+    assert 'class="olcer-toplam"' not in cikti
+    assert 'class="olcer-pencere"' not in cikti
 
 
 def test_kategori_basliklari_h3_alt_ve_satirlar():
@@ -369,34 +370,33 @@ def test_veri_none_olcer_ve_commit_sayisi_yok():
     assert "hiç commit yok" not in cikti
 
 
-def test_haftalik_none_grafik_cizmez():
-    ayar = _sahte_ayar(repolar=[{"ad": "r"}])
-    cikti = render(ayar, {"r": _veri(haftalik=None)}, BUGUN)
-    assert "<svg" not in cikti
-    assert "<b>5</b>" in cikti  # sayı/tarih yine durur
+def test_haftalik_none_grafik_ve_sayac_cizmez():
+    cikti = render(_sahte_ayar(repolar=[{"ad": "r"}]), {"r": _veri(haftalik=None)}, BUGUN)
+    assert 'class="olcer-pencere"' not in cikti
+    assert "<b>5</b>" not in cikti
 
 
-def test_olcer_izgara_ve_aria_label():
-    haftalik = (0, 1, 2, 0, 5, 3, 0, 0, 1, 0, 0, 0)
+def test_dolu_istatistikler_de_proje_icerigini_golgelemez():
     ayar = _sahte_ayar(repolar=[{"ad": "r", "one_cikan": True}])
-    cikti = render(ayar, {"r": _veri(haftalik=haftalik)}, BUGUN)
-    assert '<path class="izgara" d="M0 10H96M0 20H96M0 30H96"/>' in cikti
-    assert 'aria-label="Son 12 haftada commit sayısı: 0, 1, 2, 0, 5, 3, 0, 0, 1, 0, 0, 0"' in cikti
+    cikti = render(ayar, {"r": _veri(haftalik=(1,) * 12)}, BUGUN)
+    assert 'class="etkinlik-svg"' not in cikti
+    assert 'Son 12 haftada commit sayısı:' not in cikti
+    assert '>r</a></h3>' in cikti
 
 
-def test_olcer_hepsi_sifir_duz_cizgi():
-    ayar = _sahte_ayar(repolar=[{"ad": "r", "one_cikan": True}])
-    cikti = render(ayar, {"r": _veri(haftalik=(0,) * 12)}, BUGUN)
-    assert 'aria-label="Son 12 haftada commit sayısı: hiç commit yok"' in cikti
-    assert 'opacity="0.3"' in cikti
+def test_sifir_istatistik_yaniltici_bos_grafik_olusturmaz():
+    cikti = render(_sahte_ayar(repolar=[{"ad": "r", "one_cikan": True}]),
+                   {"r": _veri(haftalik=(0,) * 12)}, BUGUN)
+    assert 'class="etkinlik-svg"' not in cikti
+    assert 'hiç commit yok' not in cikti
 
 
-def test_olcer_ekseni_yalniz_one_unitede():
-    one = render(_sahte_ayar(repolar=[{"ad": "r", "one_cikan": True}]),
-                 {"r": _veri(haftalik=(1,) * 12)}, BUGUN)
-    satir = render(_sahte_ayar(repolar=[{"ad": "r"}]), {"r": _veri(haftalik=(1,) * 12)}, BUGUN)
-    assert 'class="olcer-eksen"' in one
-    assert 'class="olcer-eksen"' not in satir
+def test_iki_proje_turunde_de_istatistik_penceresi_yok():
+    for one in (True, False):
+        cikti = render(_sahte_ayar(repolar=[{"ad": "r", "one_cikan": one}]),
+                       {"r": _veri(haftalik=(1,) * 12)}, BUGUN)
+        assert 'class="olcer-eksen"' not in cikti
+        assert 'class="sayi"' not in cikti
 
 
 def test_diller_yuzde_ve_dosya_birimi_cikmaz_artik():
@@ -615,3 +615,22 @@ def test_yeni_alanlar_yoksa_bolumler_cikmaz():
     assert '<div class="iki">' not in cikti
     assert 'class="yetenek"' not in cikti
     assert tara(cikti) == []
+
+def test_secili_projeler_deneyimden_diger_projeler_deneyimden_sonra():
+    ayar = _sahte_ayar(
+        repolar=[{"ad": "secili", "one_cikan": True}, {"ad": "diger-proje"}],
+        deneyim=[SimpleNamespace(rol="Stajyer", kurum="Kurum", tarih="2024")],
+        egitim=[SimpleNamespace(derece="Mühendislik", okul="Okul", tarih="2024")],
+    )
+    cikti = render(ayar, {}, BUGUN)
+    assert cikti.index('class="unit one"') < cikti.index('id="deneyim"') < cikti.index('>diger-proje</a>')
+    assert cikti.index('id="egitim"') < cikti.index('>diger-proje</a>')
+
+
+def test_one_cikan_yokken_proje_basligi_ve_liste_ayrilmaz():
+    ayar = _sahte_ayar(
+        repolar=[{"ad": "tek-proje"}],
+        deneyim=[SimpleNamespace(rol="Stajyer", kurum="Kurum", tarih="2024")],
+    )
+    cikti = render(ayar, {}, BUGUN)
+    assert cikti.index('id="projeler"') < cikti.index('>tek-proje</a>') < cikti.index('id="deneyim"')

@@ -6,9 +6,9 @@ Site elle yazılmaz; `portfolyo.json` (Türkçe), `portfolyo.en.json` (İngilizc
 ve `generator/` (üretici) kaynaklarından **GitHub Actions** ile üretilip yayınlanır (`.github/workflows/yayinla.yml`).
 Üretilmiş HTML bu repoya commit'lenmez.
 
-- Proje kartlarındaki istatistikler GitHub API'sinden alınır (yalnız herkese açık repolar; özel repo asla yayınlanmaz).
+- Yayın öncesinde projelerin herkese açık olduğu GitHub API üzerinden kontrol edilir; özel repo yayınlanmaz. Commit sayaçları ve etkinlik grafikleri arayüzde gösterilmez.
 - Yayın her push'ta ve her Pazartesi otomatik çalışır; Actions sekmesinden elle de tetiklenebilir.
-- İçerik: deneyim, eğitim, yetenekler, iletişim ve CV bağlantıları `portfolyo*.json` içindedir. `one_cikan: true` olan projeler üstte büyük ünite olarak görünür.
+- İçerik: deneyim, eğitim, yetenekler, iletişim ve CV bağlantıları `portfolyo*.json` içindedir. `one_cikan: true` olan projeler üstte görünür; deneyim ve eğitim bunları izler. Diğer projeler daha aşağıda listelenir.
 - `statik/` olduğu gibi siteye kopyalanır: `statik/cv/` (CV PDF'leri), `statik/fonts/` (Barlow, SIL OFL 1.1, lisans: `OFL.txt`). CV'yi güncellemek için aynı adlı PDF'in üzerine yaz.
 - Yazı eklemek için `yazilar/` altına `ad-soyad.md` koy; frontmatter'da `herkese_acik: true` yoksa taslak sayılır ve yayınlanmaz.
 - Yayın öncesi üretici testleri koşar; bir repo için veri alınamazsa (`--siki`) yayın yapılmaz, eski site kalır.

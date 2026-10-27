@@ -40,25 +40,25 @@ def test_veri_none_son_commite_gore_ente_sirada():
     assert cikti.index("yeni-repo") < cikti.index("eski-repo") < cikti.index("yok-repo")
 
 
-def test_son_commit_date_nesnesi_iso_yazilir():
+def test_son_commit_tarihi_artik_gorunmez():
     cikti = render(_sahte_ayar(repolar=[{"ad": "r"}]),
                    {"r": _veri(son_commit=date(2026, 9, 28))}, BUGUN)
-    assert "2026-09-28" in cikti
+    assert "2026-09-28" not in cikti  # Etkinlik tarihi artık proje içeriği değil.
 
 
-def test_haftalik_dolu_degerler_olcere_girilir():
+def test_haftalik_dolu_degerlerde_de_olcer_yok():
     cikti = render(_sahte_ayar(repolar=[{"ad": "r", "one_cikan": True}]),
                    {"r": _veri(haftalik=(0, 0, 9, 0, 0, 0, 9, 2, 0, 3, 2, 3))}, BUGUN)
-    assert 'aria-label="Son 12 haftada commit sayısı: 0, 0, 9, 0, 0, 0, 9, 2, 0, 3, 2, 3"' in cikti
-    assert '<div class="olcer-rakam"><b>5</b>' in cikti
+    assert 'class="etkinlik-svg"' not in cikti
+    assert 'class="olcer-rakam"' not in cikti
     assert tara(cikti) == []
 
 
-def test_gun_sayisi_grafik_ekseni_ve_sayisi_birlikte():
+def test_grafik_ekseni_ve_sayisi_yok():
     cikti = render(_sahte_ayar(repolar=[{"ad": "r", "one_cikan": True}]),
                    {"r": _veri(haftalik=(1,) * 12)}, BUGUN)
-    assert '<div class="olcer-pencere">' in cikti
-    assert '<span>12 hafta önce</span><span>bu hafta</span>' in cikti
+    assert '<div class="olcer-pencere">' not in cikti
+    assert '<span>12 hafta önce</span><span>bu hafta</span>' not in cikti
 
 
 # --- kaldırılan alanlar --------------------------------------------------------------------
@@ -68,7 +68,7 @@ def test_dil_ve_readme_ozeti_cikmaz():
     cikti = render(_sahte_ayar(repolar=[{"ad": "r"}]),
                    {"r": _veri(diller=(("Python", 7),), readme_ozeti="Bu bir README.")}, BUGUN)
     assert "Python · 7" not in cikti and "Bu bir README." not in cikti
-    assert "<svg" in cikti and "<b>5</b>" in cikti
+    assert 'class="etkinlik-svg"' not in cikti and "<b>5</b>" not in cikti
 
 
 # --- ek bağlantılar -------------------------------------------------------------------------
